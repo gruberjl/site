@@ -8,7 +8,9 @@
       "module-resolver", {
         "root": ["./src"],
         "alias": {
-          "lib": "./src/lib"
+          "lib": "./src/lib",
+          "components": "./src/components",
+          "pages": "./src/pages"
         }
       }
     ]
