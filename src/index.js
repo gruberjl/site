@@ -1,3 +1,5 @@
+import "@babel/polyfill"
+import 'draft-js/dist/Draft.css'
 import './main.scss'
 
 import React from 'react'

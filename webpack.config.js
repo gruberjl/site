@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ["@babel/polyfill", "./src/index.js"],
   output: {
     path: path.resolve(__dirname, 'docs', 'assets'),
     publicPath: "/assets/",
@@ -46,6 +46,10 @@ module.exports = {
           { loader: 'css-loader' },
           { loader: 'sass-loader', options: {sourceMap: true} }
         ]
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       }
     ]
   },

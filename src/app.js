@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-import {Home} from 'pages'
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import {Today} from 'pages'
 
 export const App = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Today} />
     </div>
   </Router>
 )

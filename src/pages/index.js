@@ -1,1 +1,1 @@
-export {Home} from './home'
+export {Today} from './today'

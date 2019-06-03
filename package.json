@@ -43,6 +43,8 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "draft-js": "^0.10.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.0",
