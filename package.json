@@ -45,6 +45,9 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "draft-js": "^0.10.5",
+    "draft-js-divider-plugin": "^0.2.1",
+    "draft-js-inline-toolbar-plugin": "^3.0.0",
+    "draft-js-plugins-editor": "^2.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.0",
