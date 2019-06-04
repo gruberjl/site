@@ -18,6 +18,7 @@ module.exports = {
   "rules": {
     "no-console": "off",
     "semi": ["warn", "never"],
-    "indent": ["warn", 2]
+    "indent": ["warn", 2],
+    "react/prop-types": "off"
   }
 }
