@@ -1,13 +1,17 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import {Today} from 'pages'
+import {data} from 'lib'
 
 export const App = () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={Today} />
-    </div>
-  </Router>
+  <Provider store={data.store}>
+    <Router>
+      <div>
+        <Route exact path="/" component={Today} />
+      </div>
+    </Router>
+  </Provider>
 )
 
 // <Route path="/about" component={About} />

@@ -13,7 +13,8 @@
           "pages": "./src/pages"
         }
       }
-    ]
+    ],
+    "@babel/plugin-proposal-export-default-from"
   ],
   "ignore": [
     "./secret.json"
