@@ -21,7 +21,7 @@ import 'draft-js-anchor-plugin/lib/plugin.css'
 import 'draft-js-focus-plugin/lib/plugin.css'
 import 'draft-js-image-plugin/lib/plugin.css'
 
-export class GoodDid extends React.Component {
+export class Draft extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -79,7 +79,7 @@ export class GoodDid extends React.Component {
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}
-          placeholder="What good will you do today?"
+          placeholder={this.props.placeholder}
           ref={(element) => { this.editor = element }}
           handleKeyCommand={this.handleKeyCommand}
           keyBindingFn={this.bindKeys}

@@ -1,6 +1,6 @@
 import React from 'react'
-import {PageHeader, SectionDivider} from 'components'
-import {GoodDid, OkrPanel, TaskPanel} from './components'
+import {PageHeader, SectionDivider, Draft} from 'components'
+import {TaskPanel} from './components'
 
 export const Today = () => (
   <div>
@@ -8,13 +8,7 @@ export const Today = () => (
     <main className="section">
       <div className="container">
         <div className="level">
-          <GoodDid />
-        </div>
-      </div>
-      <SectionDivider />
-      <div className="container">
-        <div className="level">
-          <OkrPanel/>
+          <Draft placeholder="What good will you do today?" />
         </div>
       </div>
       <SectionDivider />
