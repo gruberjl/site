@@ -9,5 +9,9 @@ export const actions = {
 
   formSignupSubmit: 'FORM_SIGNUP_SUBMIT',
   formSignupChange: 'FORM_SIGNUP_CHANGE',
-  formSignupSubmitError: 'FORM_SIGNUP_SUBMIT_ERROR'
+  formSignupSubmitError: 'FORM_SIGNUP_SUBMIT_ERROR',
+
+  signout: 'SIGN_OUT',
+
+  setRootDoc: 'SET_ROOT_DOC'
 }

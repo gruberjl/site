@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {data, firestore} from 'lib'
+import {data} from 'lib'
 
 const mapStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn,
@@ -13,10 +13,13 @@ const mapDispatchToProps = dispatch => ({
   },
   openSignupModal: () => {
     dispatch({type: data.actions.toggleSignupModal})
+  },
+  signout: () => {
+    dispatch({type: data.actions.signout})
   }
 })
 
-export const PageHeader = ({isLoggedIn, openLoginModal, openSignupModal}) => (
+export const PageHeader = ({isLoggedIn, openLoginModal, openSignupModal, signout}) => (
   <nav className="navbar" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
       <a className="navbar-item" href="https://bulma.io">
@@ -35,7 +38,7 @@ export const PageHeader = ({isLoggedIn, openLoginModal, openSignupModal}) => (
         <div className="navbar-item">
           { isLoggedIn ?
             <div className="buttons">
-              <a className="button is-light" onClick={firestore.signout}>Sign Out</a>
+              <a className="button is-light" onClick={signout}>Sign Out</a>
             </div> :
             <div className="buttons">
               <a className="button is-light" onClick={openLoginModal}>Log in</a>
