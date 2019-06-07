@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {data} from 'lib'
 
 const mapStateToProps = state => ({
-  isOpen: state.modals.signupIsOpen,
+  isOpen: state.formSignup.modalOpen,
   data: state.formSignup.data,
   submitError: state.formSignup.submitError
 })

@@ -6,11 +6,22 @@ const STATE = {
     email: '',
     password: ''
   },
-  submitError: ''
+  submitError: '',
+  modalOpen: false
 }
 
 export const formSignup = (state = STATE, action) => {
   let newState = state
+
+  if (action.type == actions.toggleSignupModal) {
+    newState = clone(state)
+    newState.modalOpen = !newState.modalOpen
+  }
+
+  if (action.type == actions.authChange && action.user) {
+    newState = clone(state)
+    newState.modalOpen = false
+  }
 
   if (action.type == actions.formSignupChange) {
     newState = clone(state)
