@@ -1,12 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {data, firestore} from 'lib'
 
 const mapStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn,
   user: state.auth.user
 })
 
-export const PageHeader = ({isLoggedIn}) => (
+const mapDispatchToProps = dispatch => ({
+  openLoginModal: () => {
+    dispatch({type: data.actions.toggleLoginModal})
+  },
+  openSignupModal: () => {
+    dispatch({type: data.actions.toggleSignupModal})
+  }
+})
+
+export const PageHeader = ({isLoggedIn, openLoginModal, openSignupModal}) => (
   <nav className="navbar" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
       <a className="navbar-item" href="https://bulma.io">
@@ -23,16 +33,19 @@ export const PageHeader = ({isLoggedIn}) => (
     <div id="navbarBasicExample" className="navbar-menu">
       <div className="navbar-end">
         <div className="navbar-item">
-          <div className="buttons">
-            { isLoggedIn ?
-              <a className="button is-primary">Account</a> :
-              <a className="button is-light">Log in</a>
-            }
-          </div>
+          { isLoggedIn ?
+            <div className="buttons">
+              <a className="button is-light" onClick={firestore.signout}>Sign Out</a>
+            </div> :
+            <div className="buttons">
+              <a className="button is-light" onClick={openLoginModal}>Log in</a>
+              <a className="button is-primary" onClick={openSignupModal}>Sign Up</a>
+            </div>
+          }
         </div>
       </div>
     </div>
   </nav>
 )
 
-export default connect(mapStateToProps)(PageHeader)
+export default connect(mapStateToProps, mapDispatchToProps)(PageHeader)
