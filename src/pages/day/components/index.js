@@ -1,1 +1,1 @@
-export {TaskPanel} from './task-panel'
+export MainHoc from './main-hoc'

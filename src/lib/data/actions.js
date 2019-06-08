@@ -15,5 +15,7 @@ export const actions = {
 
   setRootDoc: 'SET_ROOT_DOC',
 
-  questionsUpdated: 'QUESTIONS_UPDATED'
+  questionsUpdated: 'QUESTIONS_UPDATED',
+  questionFindOrCreate: 'QUESTION_FIND_OR_CREATE',
+  questionUpdated: 'QUESTION_UPDATED'
 }

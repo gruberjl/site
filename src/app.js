@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import {Today} from 'pages'
+import {Day} from 'pages'
 import {data} from 'lib'
 import {LoginModal, SignupModal} from 'components'
 
@@ -12,7 +12,7 @@ export const App = () => (
       <SignupModal />
       <Router>
         <div>
-          <Route exact path="/" component={Today} />
+          <Route exact path="/" component={Day} />
         </div>
       </Router>
     </div>
