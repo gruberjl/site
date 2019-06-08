@@ -1,14 +1,15 @@
 import React from 'react'
-import {PageHeader, SectionDivider, Draft} from 'components'
+import {PageHeader, SectionDivider, QuestionWill} from 'components'
 import {TaskPanel} from './components'
 
-export const Today = () => (
+//          <QuestionWill date='2019-06-07' />
+export const Day = () => (
   <div>
     <PageHeader/>
     <main className="section">
       <div className="container">
         <div className="level">
-          <Draft placeholder="What good will you do today?" />
+
         </div>
       </div>
       <SectionDivider />

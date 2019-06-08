@@ -1,1 +1,1 @@
-export {Today} from './today'
+export {Day} from './day'
