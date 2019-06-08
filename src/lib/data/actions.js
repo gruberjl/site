@@ -13,5 +13,7 @@ export const actions = {
 
   signout: 'SIGN_OUT',
 
-  setRootDoc: 'SET_ROOT_DOC'
+  setRootDoc: 'SET_ROOT_DOC',
+
+  questionsUpdated: 'QUESTIONS_UPDATED'
 }
