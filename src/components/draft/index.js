@@ -67,7 +67,7 @@ export class Draft extends React.Component {
 
   render() {
     return (
-      <div className="is-full-width box" onClick={this.focus}>
+      <div onClick={this.focus}>
         <Editor
           editorState={this.props.editorState}
           onChange={this.props.onChange}

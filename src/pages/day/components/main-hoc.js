@@ -20,7 +20,15 @@ class MainHoc extends React.Component {
       didEditor:EditorState.createWithContent(convertFromRaw(questionDoc.did))
     }
 
+
+  }
+
+  componentDidMount() {
     questions.on(questions.events.docsUpdated, this.onQuestionsChange)
+  }
+
+  componentWillUnmount() {
+    questions.removeListener(questions.events.docsUpdated, this.onQuestionsChange)
   }
 
   onQuestionsChange = () => {

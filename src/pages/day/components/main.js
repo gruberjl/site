@@ -6,12 +6,14 @@ export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDid
   <main className="section">
     <div className="container">
       <div className="level">
-        <Draft
-          placeholder="What good will you do today?"
-          editorState={willEditor}
-          onChange={onWillEditorChange}
-          readOnly={!isLoaded}
-        />
+        <div className="is-full-width box">
+          <Draft
+            placeholder="What good will you do today?"
+            editorState={willEditor}
+            onChange={onWillEditorChange}
+            readOnly={!isLoaded}
+          />
+        </div>
       </div>
     </div>
     <SectionDivider />
@@ -23,12 +25,14 @@ export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDid
     <SectionDivider />
     <div className="container">
       <div className="level">
-        <Draft
-          placeholder="What good did you do today?"
-          editorState={didEditor}
-          onChange={onDidEditorChange}
-          readOnly={!isLoaded}
-        />
+        <div className="is-full-width box">
+          <Draft
+            placeholder="What good did you do today?"
+            editorState={didEditor}
+            onChange={onDidEditorChange}
+            readOnly={!isLoaded}
+          />
+        </div>
       </div>
     </div>
   </main>

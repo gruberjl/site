@@ -30,7 +30,6 @@ export class TaskHoc extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.task.id !== prevProps.task.id) {
-      console.log('update')
       this.setState({
         editorState: EditorState.createWithContent(convertFromRaw(this.props.task.content))
       })
