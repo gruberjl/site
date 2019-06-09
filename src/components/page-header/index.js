@@ -34,6 +34,12 @@ export const PageHeader = ({isLoggedIn, openLoginModal, openSignupModal, signout
     </div>
 
     <div id="navbarBasicExample" className="navbar-menu">
+      <div className="navbar-start">
+        <a className="navbar-item">Day</a>
+
+        <a className="navbar-item">Journal</a>
+      </div>
+
       <div className="navbar-end">
         <div className="navbar-item">
           { isLoggedIn ?
