@@ -4,6 +4,7 @@ import clone from 'clone-deep'
 import {Draft} from 'components'
 import {store} from 'lib'
 import {DoneCheck} from './done-check'
+import {StartPicker} from './start-picker'
 
 export class TaskHoc extends React.Component {
   constructor(props) {
@@ -43,6 +44,12 @@ export class TaskHoc extends React.Component {
     store.tasks.set(task)
   }
 
+  setStartDate = (startDate) => {
+    const task = clone(this.props.task)
+    task.startDate = startDate
+    store.tasks.set(task)
+  }
+
   render() {
     return (
       <div className="task-container">
@@ -58,6 +65,10 @@ export class TaskHoc extends React.Component {
             onBlur={this.onBlur}
           />
         </div>
+        <StartPicker
+          startDate={this.props.task.startDate}
+          setStartDate={this.setStartDate}
+        />
       </div>
     )
   }

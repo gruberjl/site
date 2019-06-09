@@ -62,3 +62,15 @@ body {
   background: none;
   outline:none;
 }
+
+.react-datepicker-wrapper input {
+  font-size: 18px;
+  outline: none;
+  border: none;
+  color: $link;
+  text-align: right;
+}
+
+.react-datepicker-popper {
+  z-index: 50 !important;
+}

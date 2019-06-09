@@ -11,7 +11,7 @@ export class TasksHoc extends React.Component {
     this.state = {
       isLoaded: tasks.isLoaded,
       tasks: Object.values(tasks.docs),
-      newTask: tasks.create(props.date)
+      newTask: tasks.create()
     }
   }
 
@@ -25,7 +25,7 @@ export class TasksHoc extends React.Component {
 
   onTasksChange = (docs) => {
     const newTask = docs[this.state.newTask.id]
-      ? tasks.create(this.props.date)
+      ? tasks.create()
       : this.state.newTask
 
     this.setState({
