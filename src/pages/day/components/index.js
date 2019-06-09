@@ -1,1 +1,1 @@
-export MainHoc from './main-hoc'
+export {MainHoc} from './main-hoc'

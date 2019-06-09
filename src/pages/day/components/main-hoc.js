@@ -1,13 +1,12 @@
 import React from 'react'
 import clone from 'clone-deep'
-import {connect} from 'react-redux'
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js'
 import {store} from 'lib'
 import {Main} from './Main'
 
 const {questions} = store
 
-class MainHoc extends React.Component {
+export class MainHoc extends React.Component {
   constructor(props) {
     super(props)
 
@@ -83,5 +82,3 @@ class MainHoc extends React.Component {
     />
   }
 }
-
-export default connect()(MainHoc)
