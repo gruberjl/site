@@ -44,7 +44,8 @@ class Tasks extends EventEmitter {
     const doc = {
       id: shortid.generate(),
       content: convertToRaw(EditorState.createEmpty().getCurrentContent()),
-      startDate: date
+      startDate: date,
+      done: ''
     }
 
     return doc

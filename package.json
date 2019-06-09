@@ -60,6 +60,7 @@
     "draft-js-resizeable-plugin": "^2.0.8",
     "draft-js-video-plugin": "^2.0.1",
     "firebase": "^6.1.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
