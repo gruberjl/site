@@ -77,6 +77,8 @@ export class Draft extends React.Component {
           keyBindingFn={this.bindKeys}
           autoComplete="on"
           spellCheck={true}
+          onBlur={this.props.onBlur}
+          editorKey={this.props.editorKey}
           plugins={[
             this.inlineToolbarPlugin,
             this.linkPlugin,

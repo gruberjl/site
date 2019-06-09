@@ -1,8 +1,8 @@
 import React from 'react'
 import {SectionDivider, Draft} from 'components'
-import {TaskPanel} from './task-panel'
+import {TasksHoc} from './tasks-hoc'
 
-export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDidEditorChange}) => (
+export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDidEditorChange, date}) => (
   <main className="section">
     <div className="container">
       <div className="level">
@@ -17,7 +17,7 @@ export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDid
     <SectionDivider />
     <div className="container">
       <div className="level">
-        <TaskPanel/>
+        <TasksHoc date={date} />
       </div>
     </div>
     <SectionDivider />
