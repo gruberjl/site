@@ -18,9 +18,7 @@ export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDid
     </div>
     <SectionDivider />
     <div className="container">
-      <div className="level">
-        <TasksHoc date={date} />
-      </div>
+      <TasksHoc date={date} />
     </div>
     <SectionDivider />
     <div className="container">

@@ -41,3 +41,9 @@ body {
   letter-spacing: 48px; /* increase space between dots */
   content: '\2022\2022\2022';
 }
+
+.task-container {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid #eee;
+}

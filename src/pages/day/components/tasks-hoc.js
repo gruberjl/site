@@ -40,9 +40,13 @@ export class TasksHoc extends React.Component {
       <div className="is-full-width">
         <div className="tasks-container">
           { this.state.tasks.map(task => (
-            <TaskHoc key={task.id} task={task} />
+            <div key={task.id} className="task-container">
+              <TaskHoc task={task} />
+            </div>
           )) }
-          <TaskHoc task={this.state.newTask}/>
+          <div className="task-container">
+            <TaskHoc task={this.state.newTask}/>
+          </div>
         </div>
       </div>
     )
