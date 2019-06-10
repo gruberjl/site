@@ -62,6 +62,7 @@ export class PageHeader extends React.Component {
             <Link to="/" className="navbar-item">Day</Link>
             <Link to="/journal" className="navbar-item">Journal</Link>
             <Link to="/engage" className="navbar-item">Engage</Link>
+            <Link to="/grow" className="navbar-item">Grow</Link>
           </div>
 
           <div className="navbar-end">
