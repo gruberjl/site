@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "array-shuffle": "^1.0.1",
     "clone-deep": "^4.0.1",
     "draft-js": "^0.10.5",
     "draft-js-anchor-plugin": "^2.0.2",
