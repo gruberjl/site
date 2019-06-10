@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import {Day, Journal} from 'pages'
+import {Day, Journal, Engage} from 'pages'
 import {LoginModal, SignupModal} from 'components'
 
 export const App = () => (
@@ -11,6 +11,7 @@ export const App = () => (
       <div>
         <Route exact path="/" component={Day} />
         <Route exact path="/journal" component={Journal} />
+        <Route exact path="/engage" component={Engage} />
       </div>
     </Router>
   </div>
