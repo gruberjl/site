@@ -1,6 +1,6 @@
 import React from 'react'
 import {PageHeader} from 'components'
-import {Tabs} from './components'
+import {Tabs, Content} from './components'
 
 export class Journal extends React.Component {
   render() {
@@ -8,6 +8,10 @@ export class Journal extends React.Component {
       <div>
         <PageHeader/>
         <Tabs />
+        <Content />
+        <div>
+
+        </div>
       </div>
     )
   }
