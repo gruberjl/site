@@ -1,6 +1,7 @@
 import React from 'react'
 import {PageHeader} from 'components'
 import {store} from 'lib'
+import {AccountContainer} from './components'
 
 const {accounts} = store
 
@@ -25,6 +26,11 @@ export class Accounts extends React.Component {
     this.setState({docs})
   }
 
+  createAccount = () => {
+    const acct = accounts.create()
+    accounts.set(acct)
+  }
+
   render() {
     const {docs} = this.state
 
@@ -36,10 +42,13 @@ export class Accounts extends React.Component {
             <div className="level">
               <div className="is-full-width">
                 { Object.values(docs).map(doc => (
-                  <div key={doc.id}>
-                    <h3>{doc.name}</h3>
-                  </div>
+                  <AccountContainer key={doc.id} doc={doc} />
                 )) }
+              </div>
+            </div>
+            <div className="level">
+              <div className="is-full-width">
+                <button type="button" onClick={this.createAccount}>Create Account</button>
               </div>
             </div>
           </div>

@@ -19,10 +19,12 @@ export class Profile extends React.Component {
   }
 
   handleClick = (e) => {
-    if (this.node.contains(e.target))
-      return
+    if (this.state.isActive) {
+      if (this.node.contains(e.target))
+        return
 
-    this.closeDropdown()
+      this.closeDropdown()
+    }
   }
 
   openDropdown = () => {

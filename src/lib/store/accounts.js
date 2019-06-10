@@ -16,6 +16,10 @@ class Accounts extends EventEmitter {
     docsUpdated: 'docsUpdated'
   }
 
+  providers = {
+    twitter: 'twitter'
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('accounts')
     this.listener = this.collection.onSnapshot(this.onDocsChange)
