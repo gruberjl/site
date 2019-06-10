@@ -100,6 +100,11 @@ body {
 }
 
 .tabs li.is-active input {
-    border-bottom: 1px solid #3273dc;
-    color: #3273dc;
+  border-bottom: 1px solid #3273dc;
+  color: #3273dc;
+}
+
+.tabs input:hover {
+  border-bottom: 1px solid #363636;
+  color: #363636;
 }

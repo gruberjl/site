@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {store} from 'lib'
+import {Profile} from './profile'
 
 const {auth} = store
 
@@ -66,9 +67,7 @@ export class PageHeader extends React.Component {
           <div className="navbar-end">
             <div className="navbar-item">
               { isLoggedIn ?
-                <div className="buttons">
-                  <a className="button is-light" onClick={auth.signout}>Sign Out</a>
-                </div> :
+                <Profile /> :
                 <div className="buttons">
                   <a className="button is-light" onClick={this.openLoginModal}>Log in</a>
                   <a className="button is-primary" onClick={this.openSignupModal}>Sign Up</a>
