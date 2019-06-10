@@ -43,6 +43,9 @@ export class Profile extends React.Component {
         </div>
         <div ref={node => this.node = node} className="dropdown-menu" id="profile-menu" role="menu">
           <div className="dropdown-content">
+            <Link className="dropdown-item" to="/accounts">Accounts</Link>
+          </div>
+          <div className="dropdown-content">
             <a className="dropdown-item" onClick={auth.signout}>Sign Out</a>
           </div>
         </div>

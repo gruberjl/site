@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import {Day, Journal, Engage, Grow} from 'pages'
+import {Day, Journal, Engage, Grow, Accounts} from 'pages'
 import {LoginModal, SignupModal} from 'components'
 
 export const App = () => (
@@ -13,6 +13,7 @@ export const App = () => (
         <Route exact path="/journal" component={Journal} />
         <Route exact path="/engage" component={Engage} />
         <Route exact path="/grow" component={Grow} />
+        <Route exact path="/accounts" component={Accounts} />
       </div>
     </Router>
   </div>
