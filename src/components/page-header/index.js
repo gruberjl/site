@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {store} from 'lib'
 
 const {auth} = store
@@ -48,9 +49,9 @@ export class PageHeader extends React.Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://bulma.io">
+          <Link to="/" className="navbar-item">
             <img src="/assets/imgs/gitbit-icon-mercury-50x50.png" width="28" height="28" />
-          </a>
+          </Link>
 
           <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -61,9 +62,9 @@ export class PageHeader extends React.Component {
 
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item">Day</a>
+            <Link to="/" className="navbar-item">Day</Link>
 
-            <a className="navbar-item">Journal</a>
+            <Link to="/journal" className="navbar-item">Journal</Link>
           </div>
 
           <div className="navbar-end">

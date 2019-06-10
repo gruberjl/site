@@ -19,7 +19,8 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'docs'),
     port: 3000,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
 
   optimization: {

@@ -74,3 +74,28 @@ body {
 .react-datepicker-popper {
   z-index: 50 !important;
 }
+
+.tabs input {
+  align-items: center;
+  border-bottom: 1px solid #dbdbdb;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -1px;
+  padding: 0.5em 1em;
+  vertical-align: top;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  background: none;
+}
+
+.tabs input[readonly] {
+  cursor: pointer;
+}
+
+.tabs li.is-active input {
+    border-bottom: 1px solid #3273dc;
+    color: #3273dc;
+}

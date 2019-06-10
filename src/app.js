@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import {Day} from 'pages'
+import {Day, Journal} from 'pages'
 import {LoginModal, SignupModal} from 'components'
 
 export const App = () => (
@@ -10,6 +10,7 @@ export const App = () => (
     <Router>
       <div>
         <Route exact path="/" component={Day} />
+        <Route exact path="/journal" component={Journal} />
       </div>
     </Router>
   </div>
