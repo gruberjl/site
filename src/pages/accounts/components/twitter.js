@@ -8,11 +8,11 @@ export class Twitter extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      accessSecret: props.doc.accessSecret,
-      accessToken: props.doc.accessToken,
-      apiSecret: props.doc.apiSecret,
-      apiToken: props.doc.apiToken,
-      username: props.doc.username
+      accessSecret: props.doc.accessSecret || '',
+      accessToken: props.doc.accessToken || '',
+      apiSecret: props.doc.apiSecret || '',
+      apiToken: props.doc.apiToken || '',
+      username: props.doc.username || ''
     }
   }
 
