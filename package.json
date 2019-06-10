@@ -6,8 +6,10 @@
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "lint": "eslint src/**  --ignore-pattern *.scss"
+    "start": "concurrently \"npm:start:dev-server\" \"npm:start:work-server\"",
+    "lint": "eslint src/**  --ignore-pattern *.scss",
+    "start:dev-server": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start:work-server": "babel-node work-server/src"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "@babel/polyfill": "^7.4.4",
     "array-shuffle": "^1.0.1",
     "clone-deep": "^4.0.1",
+    "concurrently": "^4.1.0",
     "draft-js": "^0.10.5",
     "draft-js-anchor-plugin": "^2.0.2",
     "draft-js-divider-plugin": "^0.2.1",
@@ -67,6 +70,7 @@
     "react-dom": "^16.8.6",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
-    "shortid": "^2.2.14"
+    "shortid": "^2.2.14",
+    "twit": "^2.2.11"
   }
 }

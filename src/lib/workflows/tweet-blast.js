@@ -30,8 +30,8 @@ const createRandomEngagements = async (tweet) => {
   const actions = ['like', 'share']
 
   for (let i = 0; i < altAccounts.length; i++) {
-    const action = actions[Math.floor(Math.random() * 1) + 0]
-    const delayInMinutes = Math.floor(Math.random() * 30) + 1
+    const action = actions[Math.floor(Math.random() * 2) + 0]
+    const delayInMinutes = Math.floor(Math.random() * 31) + 1
 
     const engagement = store.engagements.create('twitter', altAccounts[i].id, action, moment().add(delayInMinutes, 'minutes').toISOString())
     engagement.engageWith = tweet.id
