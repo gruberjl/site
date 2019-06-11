@@ -41,7 +41,7 @@ export class Accounts extends React.Component {
           <div className="container">
             <div className="level">
               <div className="is-full-width">
-                { Object.values(docs).map(doc => (
+                { Object.values(docs).sort((a,b) => a.name < b.name).map(doc => (
                   <AccountContainer key={doc.id} doc={doc} />
                 )) }
               </div>

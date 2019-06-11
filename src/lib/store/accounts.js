@@ -17,7 +17,13 @@ class Accounts extends EventEmitter {
   }
 
   providers = {
-    twitter: 'twitter'
+    twitter: 'twitter',
+    reddit: 'reddit'
+  }
+
+  actions = {
+    twitter: {post:'post', like:'like', share:'share'},
+    reddit: {post:'post', like:'like'}
   }
 
   onLogin = (user) => {
