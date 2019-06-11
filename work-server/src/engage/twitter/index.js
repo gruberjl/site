@@ -9,11 +9,13 @@ export const engageTwitter = async (docs) => {
     return
 
   const account = store.accounts.docs[engagement.account]
+  const parentEngagement = store.engagements.docs[engagement.engageWith]
 
-  const response = await send(engagement, account)
+  const response = await send(engagement, account, parentEngagement)
 
   if (response.error) {
     console.error(`Error sending to twitter provider; engagement id: ${engagement.id}; account id: ${account.id}`)
+    console.log(response.error)
     return
   }
 
