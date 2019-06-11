@@ -1,69 +1,39 @@
 import React from 'react'
 import {PageHeader} from 'components'
-import {workflows} from 'lib'
-
-const maxTweetLength = 280
-const tweetUrlLength = 28
+import {TwitterBlast} from './twitter-blast'
+import {RedditBlast} from './reddit-blast'
 
 export class Grow extends React.Component {
   constructor() {
     super()
     this.state = {
-      charactersLeft: 280,
-      message: '',
-      url: ''
+      tabSelected: 'twitter-blast'
     }
   }
 
-  onMessageChange = (e) => {
-    this.setState({
-      charactersLeft: maxTweetLength - tweetUrlLength - e.target.value.length,
-      message: e.target.value
-    })
-  }
-
-  onUrlChange = (e) => {
-    this.setState({
-      url: e.target.value
-    })
-  }
-
-  submit = (e) => {
-    e.preventDefault()
-    workflows.tweetBlast(this.state.url, this.state.message)
+  selectTab = (e) => {
+    this.setState({tabSelected: e.target.name})
   }
 
   render() {
+    const {tabSelected} = this.state
     return (
       <div>
         <PageHeader/>
-        <main className="section">
-          <div className="container">
-            <form onSubmit={this.submit}>
-              <div className="level">
-                <div className="is-full-width">
-                  <h1 className="title">New Twitter Blast</h1>
-                </div>
-              </div>
-              <div className="level">
-                <div className="is-full-width">
-                  <input value={this.state.url} onChange={this.onUrlChange} className="input" placeholder="URL" />
-                </div>
-              </div>
-              <div className="level">
-                <div className="is-full-width">
-                  <textarea value={this.state.message} onChange={this.onMessageChange} className="textarea" placeholder="Tweet Message"></textarea>
-                  <span>Characters Left: {this.state.charactersLeft}</span>
-                </div>
-              </div>
-              <div className="level">
-                <div className="is-full-width">
-                  <button type="submit" className="button">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </main>
+        <div className="tabs">
+          <ul>
+            <li className={tabSelected == 'twitter-blast' ? "is-active" : ''}>
+              <a name='twitter-blast' onClick={this.selectTab}>Twitter Blast</a>
+            </li>
+            <li className={tabSelected == 'reddit-blast' ? "is-active" : ''}>
+              <a name='reddit-blast' onClick={this.selectTab}>RedditBlast</a>
+            </li>
+          </ul>
+        </div>
+        { this.state.tabSelected == 'twitter-blast'
+          ? <TwitterBlast />
+          : <RedditBlast />
+        }
       </div>
     )
   }

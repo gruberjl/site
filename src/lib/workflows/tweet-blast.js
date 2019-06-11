@@ -21,8 +21,8 @@ const createOriginalPost = async (url, message) => {
 const getAltAccounts = () => {
   const accountsObj = clone(store.accounts.docs)
   delete accountsObj[primaryAccountId]
-
-  return shuffleArray(Object.values(accountsObj))
+  const twitterAccts = Object.values(accountsObj).filter(acct => Boolean(acct.provider == 'twitter'))
+  return shuffleArray(twitterAccts)
 }
 
 const createRandomEngagements = async (tweet) => {

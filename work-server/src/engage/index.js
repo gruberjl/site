@@ -1,10 +1,12 @@
 import {store} from 'lib'
 import {engageTwitter} from './twitter'
+import {engageReddit} from './reddit'
 
 export const engage = async () => {
   const docs = Object.values(store.engagements.docs)
   const sortedByTime = sortByTime(docs)
-  await engageTwitter(sortedByTime)
+  // await engageTwitter(filterByProvider(sortedByTime, 'twitter'))
+  await engageReddit(filterByProvider(sortedByTime, 'reddit'))
 }
 
 const sortByTime = (docs) => {
@@ -15,3 +17,5 @@ const sortByTime = (docs) => {
     return 1
   })
 }
+
+const filterByProvider = (docs, provider) => docs.filter(doc => doc.provider == provider)
