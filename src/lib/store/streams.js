@@ -20,6 +20,10 @@ class Streams extends EventEmitter {
     twitter: {timeline:'Timeline'}
   }
 
+  docsByChannel = (channelId) => {
+    return Object.values(this.docs).filter(doc => doc.channelId == channelId)
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('streams')
     this.listener = this.collection.onSnapshot(this.onDocsChange)

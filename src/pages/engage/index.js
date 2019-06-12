@@ -1,6 +1,7 @@
 import React from 'react'
 import {PageHeader, TabsEditable} from 'components'
 import {store} from 'lib'
+import {Content} from './content'
 
 export class Engage extends React.Component {
   constructor(props) {
@@ -42,11 +43,22 @@ export class Engage extends React.Component {
 
   render() {
     const {activeTab} = this.state
+    const channel = store.channels.docs[activeTab]
 
     return (
       <div>
         <PageHeader/>
-        <TabsEditable tabs={this.state.docs} activeTab={activeTab} setActiveTab={store.channels.setActiveTab} onNameChange={this.onNameChange} addTab={this.addTab} />
+        <TabsEditable
+          tabs={this.state.docs}
+          activeTab={activeTab}
+          setActiveTab={store.channels.setActiveTab}
+          onNameChange={this.onNameChange}
+          addTab={this.addTab}
+        />
+        { channel
+          ? <Content channel={channel} />
+          : <div />
+        }
       </div>
     )
   }
