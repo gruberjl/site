@@ -1,5 +1,6 @@
 import {setup} from './setup'
 import {engage} from './engage'
+import {followBack} from './follow-back'
 
 const start = async () => {
   await setup()
@@ -8,6 +9,7 @@ const start = async () => {
 
 const run = async () => {
   await engage()
+  followBack()
 }
 
 start()
