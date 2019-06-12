@@ -4,13 +4,10 @@ import {followBack} from './follow-back'
 
 const start = async () => {
   await setup()
-  run()
-}
-
-const run = async () => {
   await engage()
-  followBack()
+  await followBack()
 }
 
 start()
-setInterval(() => run(), 300000)
+setInterval(() => engage(), 300000)
+setInterval(() => followBack(), 18000000)
