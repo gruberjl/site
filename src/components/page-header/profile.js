@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {store} from 'lib'
-
+import { withRouter } from "react-router"
 const {auth} = store
 
-export class Profile extends React.Component {
+class Profile extends React.Component {
   constructor() {
     super()
     this.state = {isActive: ''}
@@ -18,8 +18,14 @@ export class Profile extends React.Component {
     document.addEventListener('mousedown', this.handleClick, false)
   }
 
+  componentDidUpdate = (prevProps) => {
+    if (this.props.location !== prevProps.location) {
+      this.closeDropdown()
+    }
+  }
+
   handleClick = (e) => {
-    if (this.state.isActive) {
+    if (this.state.isActive && this.node) {
       if (this.node.contains(e.target))
         return
 
@@ -48,6 +54,9 @@ export class Profile extends React.Component {
             <Link className="dropdown-item" to="/accounts">Accounts</Link>
           </div>
           <div className="dropdown-content">
+            <Link className="dropdown-item" to="/streams">Streams</Link>
+          </div>
+          <div className="dropdown-content">
             <a className="dropdown-item" onClick={auth.signout}>Sign Out</a>
           </div>
         </div>
@@ -55,3 +64,5 @@ export class Profile extends React.Component {
     )
   }
 }
+
+export default withRouter(Profile)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {store} from 'lib'
-import {Profile} from './profile'
+import Profile from './profile'
 
 const {auth} = store
 
