@@ -11,8 +11,7 @@ export class Reddit extends React.Component {
       accessToken: props.doc.accessToken || '',
       apiSecret: props.doc.apiSecret || '',
       apiToken: props.doc.apiToken || '',
-      username: props.doc.username || '',
-      randomEngageSearch: props.doc.randomEngageSearch || ''
+      username: props.doc.username || ''
     }
   }
 
@@ -22,13 +21,12 @@ export class Reddit extends React.Component {
 
   save = () => {
     const doc = clone(this.props.doc)
-    const {accessToken, apiSecret, apiToken, username, randomEngageSearch} = this.state
+    const {accessToken, apiSecret, apiToken, username} = this.state
 
     doc.accessToken = accessToken
     doc.apiSecret = apiSecret
     doc.apiToken = apiToken
     doc.username = username
-    doc.randomEngageSearch = randomEngageSearch
 
     accounts.set(doc)
   }
@@ -68,24 +66,6 @@ export class Reddit extends React.Component {
               <label className="label">API Token</label>
               <div className="control">
                 <input value={this.state.apiToken} className="input" type="text" placeholder="Api Token" name="apiToken" onChange={this.onChange} onBlur={this.save} />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column">
-            <div className="field">
-              <label className="label">Random Engage</label>
-              <div className="control">
-                <input
-                  value={this.state.randomEngageSearch}
-                  className="input"
-                  type="text"
-                  placeholder="subreddit to randomly engage with"
-                  name="randomEngageSearch"
-                  onChange={this.onChange}
-                  onBlur={this.save}
-                />
               </div>
             </div>
           </div>

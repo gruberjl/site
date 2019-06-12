@@ -13,8 +13,7 @@ export class Twitter extends React.Component {
       apiSecret: props.doc.apiSecret || '',
       apiToken: props.doc.apiToken || '',
       username: props.doc.username || '',
-      followBack: props.doc.followBack || false,
-      randomEngageSearch: props.doc.randomEngageSearch || ''
+      followBack: props.doc.followBack || false
     }
   }
 
@@ -25,7 +24,7 @@ export class Twitter extends React.Component {
 
   save = () => {
     const doc = clone(this.props.doc)
-    const {accessSecret, accessToken, apiSecret, apiToken, username, followBack, randomEngageSearch} = this.state
+    const {accessSecret, accessToken, apiSecret, apiToken, username, followBack} = this.state
 
     doc.accessSecret = accessSecret
     doc.accessToken = accessToken
@@ -33,7 +32,6 @@ export class Twitter extends React.Component {
     doc.apiToken = apiToken
     doc.username = username
     doc.followBack = followBack
-    doc.randomEngageSearch = randomEngageSearch
 
     accounts.set(doc)
   }
@@ -92,22 +90,6 @@ export class Twitter extends React.Component {
             <label className="checkbox">
               <input type="checkbox" onChange={this.onChange} name="followBack" checked={this.state.followBack} onBlur={this.save} /> Follow back
             </label>
-          </div>
-          <div className="column">
-            <div className="field">
-              <label className="label">Random Engage</label>
-              <div className="control">
-                <input
-                  value={this.state.randomEngageSearch}
-                  className="input"
-                  type="text"
-                  placeholder="String to search and engage randomly with people"
-                  name="randomEngageSearch"
-                  onChange={this.onChange}
-                  onBlur={this.save}
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
