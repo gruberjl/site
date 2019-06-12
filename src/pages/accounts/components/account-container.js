@@ -16,9 +16,24 @@ const AccountDetails = ({doc}) => {
   return <div/>
 }
 
+const AccountIcon = ({doc}) => {
+  if (doc.provider == accounts.providers.twitter)
+    return <img src="/assets/imgs/twitter-icon.png" width="50" height="50" className="account-icon"/>
+
+  if (doc.provider == accounts.providers.reddit)
+    return <img src="/assets/imgs/reddit-icon.png" width="50" height="50" className="account-icon"/>
+
+  return <img src="/assets/imgs/icon-account.png" width="50" height="50" className="account-icon"/>
+}
+
 export const AccountContainer = ({doc}) => (
-  <div className="account-container">
-    <AccountHeader doc={doc} />
-    <AccountDetails doc={doc}/>
+  <div className="account-container columns">
+    <div className="column is-narrow">
+      <AccountIcon doc={doc} />
+    </div>
+    <div className="column">
+      <AccountHeader doc={doc} />
+      <AccountDetails doc={doc}/>
+    </div>
   </div>
 )

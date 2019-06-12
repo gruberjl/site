@@ -1,5 +1,5 @@
 import React from 'react'
-import {PageHeader} from 'components'
+import {PageHeader, SectionDivider} from 'components'
 import {store} from 'lib'
 import {AccountContainer} from './components'
 
@@ -43,11 +43,14 @@ export class Accounts extends React.Component {
               <div className="column is-three-fifths is-offset-one-fifth">
                 <div>
                   { Object.values(docs).sort((a,b) => a.name < b.name).map(doc => (
-                    <AccountContainer key={doc.id} doc={doc} />
+                    <div key={doc.id}>
+                      <AccountContainer doc={doc} />
+                      <SectionDivider/>
+                    </div>
                   )) }
                 </div>
                 <div>
-                  <button type="button" onClick={this.createAccount}>Create Account</button>
+                  <button type="button" className="button is-primary" onClick={this.createAccount}>Create Account</button>
                 </div>
               </div>
             </div>
