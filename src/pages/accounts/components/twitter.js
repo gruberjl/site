@@ -36,29 +36,50 @@ export class Twitter extends React.Component {
   render() {
     return (
       <div>
-        <div className="field">
-          <div className="control">
-            <input value={this.state.username} className="input" type="text" placeholder="Username" name="username" onChange={this.onChange} onBlur={this.save} />
+        <div className="columns">
+          <div className="column">
+            <div className="field">
+              <label className="label">Platform Username</label>
+              <div className="control">
+                <input value={this.state.username} className="input" type="text" placeholder="Username" name="username" onChange={this.onChange} onBlur={this.save} />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <input value={this.state.accessSecret} className="input" type="text" placeholder="Access Secret" name="accessSecret" onChange={this.onChange} onBlur={this.save} />
+        <div className="columns">
+          <div className="column">
+            <div className="field">
+              <label className="label">Access Token</label>
+              <div className="control">
+                <input value={this.state.accessToken} className="input" type="text" placeholder="Access Token" name="accessToken" onChange={this.onChange} onBlur={this.save} />
+              </div>
+            </div>
+          </div>
+          <div className="column">
+            <div className="field">
+              <label className="label">Access Secret</label>
+              <div className="control">
+                <input value={this.state.accessSecret} className="input" type="text" placeholder="Access Secret" name="accessSecret" onChange={this.onChange} onBlur={this.save} />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <input value={this.state.accessToken} className="input" type="text" placeholder="Access Token" name="accessToken" onChange={this.onChange} onBlur={this.save} />
+        <div className="columns">
+          <div className="column">
+            <div className="field">
+              <label className="label">Api Token</label>
+              <div className="control">
+                <input value={this.state.apiToken} className="input" type="text" placeholder="Api Token" name="apiToken" onChange={this.onChange} onBlur={this.save} />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <div className="control">
-            <input value={this.state.apiSecret} className="input" type="text" placeholder="API Secret" name="apiSecret" onChange={this.onChange} onBlur={this.save} />
-          </div>
-        </div>
-        <div className="field">
-          <div className="control">
-            <input value={this.state.apiToken} className="input" type="text" placeholder="Api Token" name="apiToken" onChange={this.onChange} onBlur={this.save} />
+          <div className="column">
+            <div className="field">
+              <label className="label">Api Secret</label>
+              <div className="control">
+                <input value={this.state.apiSecret} className="input" type="text" placeholder="API Secret" name="apiSecret" onChange={this.onChange} onBlur={this.save} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

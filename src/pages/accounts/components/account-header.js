@@ -29,21 +29,27 @@ export class AccountHeader extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="field">
-          <div className="control">
-            <input value={this.state.name} className="input" type="text" placeholder="Account Name" name="name" onChange={this.onChange} onBlur={this.save} />
+      <div className="columns">
+        <div className="column is-one-fifth">
+          <div className="field">
+            <label className="label">Platform</label>
+            <div className="control">
+              <div className="select">
+                <select name="provider" onChange={this.onChange} value={this.state.provider} onBlur={this.save}>
+                  <option value="">Select provider</option>
+                  { Object.values(accounts.providers).map(p => (
+                    <option key={p} value={p}>{p}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <div className="select">
-              <select name="provider" onChange={this.onChange} value={this.state.provider} onBlur={this.save}>
-                <option value="">Select provider</option>
-                { Object.values(accounts.providers).map(p => (
-                  <option key={p} value={p}>{p}</option>
-                ))}
-              </select>
+        <div className="column">
+          <div className="field">
+            <label className="label">Name</label>
+            <div className="control">
+              <input value={this.state.name} className="input" type="text" placeholder="Account Name" name="name" onChange={this.onChange} onBlur={this.save} />
             </div>
           </div>
         </div>

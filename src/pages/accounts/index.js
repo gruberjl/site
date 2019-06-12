@@ -39,16 +39,16 @@ export class Accounts extends React.Component {
         <PageHeader/>
         <main className="section">
           <div className="container">
-            <div className="level">
-              <div className="is-full-width">
-                { Object.values(docs).sort((a,b) => a.name < b.name).map(doc => (
-                  <AccountContainer key={doc.id} doc={doc} />
-                )) }
-              </div>
-            </div>
-            <div className="level">
-              <div className="is-full-width">
-                <button type="button" onClick={this.createAccount}>Create Account</button>
+            <div className="columns">
+              <div className="column is-three-fifths is-offset-one-fifth">
+                <div>
+                  { Object.values(docs).sort((a,b) => a.name < b.name).map(doc => (
+                    <AccountContainer key={doc.id} doc={doc} />
+                  )) }
+                </div>
+                <div>
+                  <button type="button" onClick={this.createAccount}>Create Account</button>
+                </div>
               </div>
             </div>
           </div>
