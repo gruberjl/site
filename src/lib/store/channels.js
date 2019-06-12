@@ -18,6 +18,15 @@ class Channels extends EventEmitter {
     activeTabChanged: 'ACTIVE_TAB_CHANGED'
   }
 
+  docsByName = () => {
+    return Object.values(this.docs).sort((a, b) => {
+      if (a.name < b.name)
+        return -1
+
+      return 1
+    })
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('channels')
     this.listener = this.collection.onSnapshot(this.onDocsChange)

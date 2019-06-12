@@ -16,6 +16,10 @@ class Streams extends EventEmitter {
     docsUpdated: 'docsUpdated'
   }
 
+  types = {
+    twitter: {timeline:'Timeline'}
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('streams')
     this.listener = this.collection.onSnapshot(this.onDocsChange)
@@ -43,7 +47,8 @@ class Streams extends EventEmitter {
     const doc = {
       id: shortid.generate(),
       name: '',
-      accountId: ''
+      accountId: '',
+      channelId: ''
     }
 
     return doc
