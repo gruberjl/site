@@ -3,7 +3,7 @@ import EventEmitter  from 'events'
 import shortid from 'shortid'
 import {auth} from './auth'
 
-class Accounts extends EventEmitter {
+class Streams extends EventEmitter {
   constructor() {
     super()
     auth.once(auth.events.login, this.onLogin)
@@ -16,27 +16,8 @@ class Accounts extends EventEmitter {
     docsUpdated: 'docsUpdated'
   }
 
-  providers = {
-    twitter: 'twitter',
-    reddit: 'reddit'
-  }
-
-  actions = {
-    twitter: {post:'post', like:'like', share:'share'},
-    reddit: {post:'post', like:'like'}
-  }
-
-  docsByName = () => {
-    return Object.values(this.docs).sort((a, b) => {
-      if (a.name < b.name)
-        return -1
-
-      return 1
-    })
-  }
-
   onLogin = (user) => {
-    this.collection = firestore.db.collection('root').doc(user.uid).collection('accounts')
+    this.collection = firestore.db.collection('root').doc(user.uid).collection('streams')
     this.listener = this.collection.onSnapshot(this.onDocsChange)
   }
 
@@ -62,7 +43,7 @@ class Accounts extends EventEmitter {
     const doc = {
       id: shortid.generate(),
       name: '',
-      provider: ''
+      accountId: ''
     }
 
     return doc
@@ -73,4 +54,4 @@ class Accounts extends EventEmitter {
   }
 }
 
-export const accounts = new Accounts()
+export const streams = new Streams()
