@@ -12,23 +12,28 @@ export class Twitter extends React.Component {
       accessToken: props.doc.accessToken || '',
       apiSecret: props.doc.apiSecret || '',
       apiToken: props.doc.apiToken || '',
-      username: props.doc.username || ''
+      username: props.doc.username || '',
+      followBack: props.doc.followBack || false,
+      randomEngageSearch: props.doc.randomEngageSearch || ''
     }
   }
 
   onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+    this.setState({[e.target.name]: value})
   }
 
   save = () => {
     const doc = clone(this.props.doc)
-    const {accessSecret, accessToken, apiSecret, apiToken, username} = this.state
+    const {accessSecret, accessToken, apiSecret, apiToken, username, followBack, randomEngageSearch} = this.state
 
     doc.accessSecret = accessSecret
     doc.accessToken = accessToken
     doc.apiSecret = apiSecret
     doc.apiToken = apiToken
     doc.username = username
+    doc.followBack = followBack
+    doc.randomEngageSearch = randomEngageSearch
 
     accounts.set(doc)
   }
@@ -78,6 +83,29 @@ export class Twitter extends React.Component {
               <label className="label">Api Secret</label>
               <div className="control">
                 <input value={this.state.apiSecret} className="input" type="text" placeholder="API Secret" name="apiSecret" onChange={this.onChange} onBlur={this.save} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column is-narrow">
+            <label className="checkbox">
+              <input type="checkbox" onChange={this.onChange} name="followBack" checked={this.state.followBack} onBlur={this.save} /> Follow back
+            </label>
+          </div>
+          <div className="column">
+            <div className="field">
+              <label className="label">Random Engage</label>
+              <div className="control">
+                <input
+                  value={this.state.randomEngageSearch}
+                  className="input"
+                  type="text"
+                  placeholder="String to search and engage randomly with people"
+                  name="randomEngageSearch"
+                  onChange={this.onChange}
+                  onBlur={this.save}
+                />
               </div>
             </div>
           </div>
