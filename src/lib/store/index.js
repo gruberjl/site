@@ -7,5 +7,6 @@ import {accounts} from './accounts'
 import {engagements} from './engagements'
 import {channels} from './channels'
 import {streams} from './streams'
+import {posts} from './posts'
 
-export const store = {auth, questions, rootDoc, tasks, journals, accounts, engagements, channels, streams}
+export const store = {auth, questions, rootDoc, tasks, journals, accounts, engagements, channels, streams, posts}

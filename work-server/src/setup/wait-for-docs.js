@@ -3,6 +3,7 @@ import {store} from 'lib'
 export const waitForDocs = async () => {
   await waitForEngagements()
   await waitForAccounts()
+  await waitForPosts()
 }
 
 const waitForEngagements = () => new Promise(res => {
@@ -17,4 +18,11 @@ const waitForAccounts = () => new Promise(res => {
     return res(true)
 
   store.engagements.once(store.accounts.events.docsUpdated, () => res(true))
+})
+
+const waitForPosts = () => new Promise(res => {
+  if (store.posts.isLoaded)
+    return res(true)
+
+  store.engagements.once(store.posts.events.docsUpdated, () => res(true))
 })
