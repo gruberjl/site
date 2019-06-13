@@ -20,7 +20,9 @@ export class Content extends React.Component {
   }
 
   onStreamsUpdated = () => {
-    this.setState({streamDocs: store.streams.docsByChannel(this.props.channel.id)})
+    this.setState({
+      streamDocs: store.streams.docsByChannel(this.props.channel.id)
+    })
   }
 
   render() {
