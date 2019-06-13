@@ -13,4 +13,4 @@ const start = async () => {
 start()
 setInterval(() => engage(), 300000)
 setInterval(() => followBack(), 18000000)
-setInterval(() => getPosts(), 30000)
+setInterval(() => getPosts(), 60000)

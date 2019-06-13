@@ -117,3 +117,12 @@ body {
 .account-icon {
   margin-top: 20px;
 }
+
+.dot-before:before {
+  content: "\00b7";
+  padding-right: 5px;
+}
+
+.message-title {
+  padding-right: 5px;
+}

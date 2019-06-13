@@ -9,7 +9,9 @@ export const getTimeline = async (stream, account, post) => {
   })
 
   const options = {
-    count:100
+    count:100,
+    include_entities: true,
+    tweet_mode: 'extended'
   }
 
   if (post.since_id) options.since_id = post.since_id

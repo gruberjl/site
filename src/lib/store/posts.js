@@ -15,6 +15,16 @@ class Posts extends EventEmitter {
     docsUpdated: 'docsUpdated'
   }
 
+  docsByStreams = (streams) => {
+    let posts = []
+    const docs = Object.values(this.docs)
+    streams.forEach(stream => {
+      posts = [].concat(posts, docs.filter(post => post.streamId == stream.id))
+    })
+
+    return posts
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('posts')
     this.listener = this.collection.onSnapshot(this.onDocsChange)

@@ -1,19 +1,24 @@
 import React from 'react'
+import moment from 'moment'
 
-export const Post = () => (
+export const Message = ({message}) => (
   <div className="box">
     <article className="media">
       <div className="media-left">
-        <figure className="image is-64x64">
-          <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+        <figure className="image is-48x48" title={message.user.description}>
+          <img className="is-rounded" src={message.user.image} alt="Image" />
         </figure>
       </div>
       <div className="media-content">
         <div className="content">
           <p>
-            <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+            <strong className="message-title" title={`@${message.user.username}`}>{message.user.name}</strong>
+            <small className="dot-before message-title" title={moment(message.created).format("dddd, MMMM Do YYYY, h:mm:ss a")}>{moment(message.created).fromNow(true)}</small>
+            <small className="dot-before" title={`${message.user.followCount} Followers`}>{message.user.followCount}f</small>
             <br />
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            {message.text}
+            <br />
+            {JSON.stringify(message, null, 2)}
           </p>
         </div>
         <nav className="level is-mobile">

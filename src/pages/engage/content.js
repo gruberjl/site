@@ -1,5 +1,5 @@
 import React from 'react'
-import {Post} from './post'
+import {Posts} from './posts'
 import {store} from 'lib'
 
 export class Content extends React.Component {
@@ -7,7 +7,8 @@ export class Content extends React.Component {
     super(props)
 
     this.state = {
-      streamDocs: store.streams.docsByChannel(props.channel.id)
+      streamDocs: store.streams.docsByChannel(props.channel.id),
+      isLoaded: store.streams.isLoaded
     }
   }
 
@@ -21,7 +22,8 @@ export class Content extends React.Component {
 
   onStreamsUpdated = () => {
     this.setState({
-      streamDocs: store.streams.docsByChannel(this.props.channel.id)
+      streamDocs: store.streams.docsByChannel(this.props.channel.id),
+      isLoaded: true
     })
   }
 
@@ -29,7 +31,10 @@ export class Content extends React.Component {
     return (
       <div className="columns">
         <div className="column is-half is-offset-one-quarter">
-          <Post />
+          { this.state.isLoaded
+            ? <Posts streams={this.state.streamDocs} />
+            : <div/>
+          }
         </div>
       </div>
     )
