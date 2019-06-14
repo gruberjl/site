@@ -6,9 +6,9 @@ export class StreamHeader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: props.doc.name,
-      accountId: props.doc.accountId,
-      channelId: props.doc.channelId,
+      name: props.stream.name,
+      accountId: props.stream.accountId,
+      channelId: props.stream.channelId,
       accounts: store.accounts.docsByName(),
       channels: store.channels.docsByName()
     }
@@ -37,14 +37,14 @@ export class StreamHeader extends React.Component {
   }
 
   save = () => {
-    const doc = clone(this.props.doc)
+    const stream = clone(this.props.stream)
     const {name, accountId, channelId} = this.state
 
-    doc.name = name
-    doc.accountId = accountId
-    doc.channelId = channelId
+    stream.name = name
+    stream.accountId = accountId
+    stream.channelId = channelId
 
-    store.streams.set(doc)
+    store.streams.set(stream)
   }
 
   render() {

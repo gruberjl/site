@@ -17,7 +17,8 @@ class Streams extends EventEmitter {
   }
 
   types = {
-    twitter: {timeline:'Timeline'}
+    twitter: {timeline:'Timeline'},
+    reddit: {direct:'Direct Messages'}
   }
 
   docsByChannel = (channelId) => {

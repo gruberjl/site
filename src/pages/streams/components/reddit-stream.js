@@ -2,11 +2,11 @@ import React from 'react'
 import clone from 'clone-deep'
 import {store} from 'lib'
 
-export class TwitterStream extends React.Component {
+export class RedditStream extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      type: props.stream.type || store.streams.types.twitter.timeline
+      type: props.stream.type || store.streams.types.reddit.direct
     }
   }
 
@@ -25,7 +25,7 @@ export class TwitterStream extends React.Component {
   }
 
   render() {
-    const types = Object.values(store.streams.types.twitter)
+    const types = Object.values(store.streams.types.reddit)
     return (
       <div className="columns">
         <div className="column">

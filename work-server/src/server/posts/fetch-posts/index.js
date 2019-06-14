@@ -1,4 +1,5 @@
 import {getTwitterPosts} from './twitter'
+import {getRedditPosts} from './reddit'
 
 export const fetchPostsAll = (streams, accounts) => {
   const accountsObj = toObj(accounts)
@@ -22,6 +23,10 @@ const fetchPosts = (accounts) => async (stream) => {
   let response
   if (account.provider == 'twitter') {
     response = await getTwitterPosts(stream, account)
+  }
+
+  if (account.provider == 'reddit') {
+    response = await getRedditPosts(stream, account)
   }
 
   return response

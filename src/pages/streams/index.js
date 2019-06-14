@@ -40,9 +40,9 @@ export class Streams extends React.Component {
             <div className="columns">
               <div className="column is-three-fifths is-offset-one-fifth">
                 <div>
-                  { Object.values(docs).sort((a,b) => a.name < b.name).map(doc => (
-                    <div key={doc.id}>
-                      <StreamContainer doc={doc} />
+                  { Object.values(docs).sort((a,b) => a.name < b.name).map(stream => (
+                    <div key={stream.id}>
+                      <StreamContainer stream={stream} />
                       <SectionDivider/>
                     </div>
                   )) }
