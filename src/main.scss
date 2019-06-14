@@ -12,16 +12,20 @@ body {
   font-size: 18px;
 }
 
+.is-full-width {
+  width: 100%;
+}
+
+.is-margin-auto {
+  margin: auto;
+}
+
 .navbar {
   background: #6200ce;
 }
 
 .navbar-item {
   color: white;
-}
-
-.is-full-width {
-  width: 100%;
 }
 
 .section-divider {
@@ -123,6 +127,14 @@ body {
   padding-right: 5px;
 }
 
-.message-title {
+.post-container article.media  {
+  border-top: none;
+}
+
+.post-title {
   padding-right: 5px;
+}
+
+.post-follow-button {
+  margin-top: 10px;
 }

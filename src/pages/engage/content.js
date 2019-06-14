@@ -1,29 +1,29 @@
 import React from 'react'
-import {Posts} from './posts'
-import {store} from 'lib'
+import {apis} from 'lib'
+import {Post} from './post'
 
 export class Content extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      streamDocs: store.streams.docsByChannel(props.channel.id),
-      isLoaded: store.streams.isLoaded
+      posts: [],
+      error: ''
     }
   }
 
-  componentDidMount() {
-    store.streams.on(store.streams.events.docsUpdated, this.onStreamsUpdated)
-  }
+  componentDidMount = async () => {
+    const response = await apis.posts.get(this.props.channel.id).catch(error => ({error}))
 
-  componentWillUnmount() {
-    store.streams.removeListener(store.streams.events.docsUpdated, this.onStreamsUpdated)
-  }
+    if (response.error) {
+      this.setState({error: response.error})
+      return
+    }
 
-  onStreamsUpdated = () => {
     this.setState({
-      streamDocs: store.streams.docsByChannel(this.props.channel.id),
-      isLoaded: true
+      posts: response.map(r => {
+        return r.posts
+      }).flat()
     })
   }
 
@@ -31,10 +31,13 @@ export class Content extends React.Component {
     return (
       <div className="columns">
         <div className="column is-half is-offset-one-quarter">
-          { this.state.isLoaded
-            ? <Posts streams={this.state.streamDocs} />
-            : <div/>
+          { this.state.error != ''
+            ? <code>{JSON.stringify(this.state.error, null, 2)}</code>
+            : ''
           }
+          { this.state.posts.map(post => (
+            <Post key={post.id} post={post} />
+          )) }
         </div>
       </div>
     )
