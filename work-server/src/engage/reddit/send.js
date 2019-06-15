@@ -13,6 +13,9 @@ export const send = async (engagement, account, parentEngagement) => {
 
   if (engagement.action == 'like')
     return await like(r, engagement, parentEngagement)
+
+  if (engagement.action == 'deleteFromInbox')
+    return await deleteFromInbox(r, engagement)
 }
 
 const post = (r, engagement) => {
@@ -28,6 +31,14 @@ const post = (r, engagement) => {
 
 const like = (r, engagement, parentEngagement) => {
   return r.getSubmission(parentEngagement.providerId).upvote().then(response => {
+    return {providerId: response.name}
+  }).catch(({error}) => {
+    return {error}
+  })
+}
+
+const deleteFromInbox = (r, engagement) => {
+  return r.getMessage(engagement.providerId).deleteFromInbox().then(response => {
     return {providerId: response.name}
   }).catch(({error}) => {
     return {error}

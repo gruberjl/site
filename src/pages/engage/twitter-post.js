@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-export const Post = ({post}) => (
+export const TwitterPost = ({post}) => (
   <div className="box post-container">
     <article className="media">
       <div className="media-left">
@@ -27,7 +27,7 @@ export const Post = ({post}) => (
           </p>
         </div>
         { post.sharedPost
-          ? <Post post={post.sharedPost} />
+          ? <TwitterPost post={post.sharedPost} />
           : ''
         }
         <nav className="level is-mobile">

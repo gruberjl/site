@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const scrubPost = post => {
   const newPost = {
     id: post.id,
@@ -9,7 +11,7 @@ export const scrubPost = post => {
     favoriteCount: 0,
     favorited: false,
     shared: false,
-    created: (new Date(post.created_utc)).toISOString(),
+    created: moment.unix(post.created_utc).toISOString(),
     raw: post
   }
 
