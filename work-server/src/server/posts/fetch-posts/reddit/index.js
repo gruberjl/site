@@ -2,7 +2,7 @@ import {getDirectMessages} from './get-direct-messages'
 import {scrubPost} from './scrub-post'
 
 export const getRedditPosts = async (stream, account) => {
-  let response
+  let response = {posts:[]}
 
   if (stream.type == 'Direct Messages') {
     response = await getDirectMessages(stream, account)
