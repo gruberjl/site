@@ -8,28 +8,8 @@ export class StreamHeader extends React.Component {
     this.state = {
       name: props.stream.name,
       accountId: props.stream.accountId,
-      channelId: props.stream.channelId,
-      accounts: store.accounts.docsByName(),
-      channels: store.channels.docsByName()
+      channelId: props.stream.channelId
     }
-  }
-
-  componentDidMount() {
-    store.accounts.on(store.accounts.events.docsUpdated, this.onAccountsUpdated)
-    store.channels.on(store.channels.events.docsUpdated, this.onChannelsUpdated)
-  }
-
-  componentWillUnmount() {
-    store.accounts.removeListener(store.accounts.events.docsUpdated, this.onAccountsUpdated)
-    store.channels.removeListener(store.channels.events.docsUpdated, this.onChannelsUpdated)
-  }
-
-  onAccountsUpdated = () => {
-    this.setState({accounts: store.accounts.docsByName()})
-  }
-
-  onChannelsUpdated = () => {
-    this.setState({channels: store.channels.docsByName()})
   }
 
   onChange = (e) => {
@@ -48,7 +28,8 @@ export class StreamHeader extends React.Component {
   }
 
   render() {
-    const {accounts, channels, accountId, name, channelId} = this.state
+    const {accountId, name, channelId} = this.state
+    const {accounts, channels} = this.props
 
     return (
       <div>

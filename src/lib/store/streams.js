@@ -25,6 +25,15 @@ class Streams extends EventEmitter {
     return Object.values(this.docs).filter(doc => doc.channelId == channelId)
   }
 
+  docsByName = () => {
+    return Object.values(this.docs).sort((a, b) => {
+      if (a.name < b.name)
+        return -1
+
+      return 1
+    })
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('streams')
     this.listener = this.collection.onSnapshot(this.onDocsChange)

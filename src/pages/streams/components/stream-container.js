@@ -22,10 +22,10 @@ const StreamBody = ({stream}) => {
   return <div/>
 }
 
-export const StreamContainer = ({stream}) => (
+export const StreamContainer = ({stream, accounts, channels}) => (
   <div className="stream-container columns">
     <div className="column">
-      <StreamHeader stream={stream} />
+      <StreamHeader stream={stream} accounts={accounts} channels={channels} />
       <StreamBody stream={stream} />
     </div>
   </div>
