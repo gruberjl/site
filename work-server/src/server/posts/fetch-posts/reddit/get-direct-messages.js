@@ -16,7 +16,7 @@ export const getDirectMessages = async (stream, account) => {
   }
 
   return {
-    posts: response,
+    posts: response.filter(post => post.new),
     streamId: stream.id
   }
 }

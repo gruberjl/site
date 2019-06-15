@@ -14,8 +14,8 @@ export const send = async (engagement, account, parentEngagement) => {
   if (engagement.action == 'like')
     return await like(r, engagement, parentEngagement)
 
-  if (engagement.action == 'deleteFromInbox')
-    return await deleteFromInbox(r, engagement)
+  if (engagement.action == 'markAsRead')
+    return await markAsRead(r, engagement)
 }
 
 const post = (r, engagement) => {
@@ -37,10 +37,11 @@ const like = (r, engagement, parentEngagement) => {
   })
 }
 
-const deleteFromInbox = (r, engagement) => {
-  return r.getMessage(engagement.providerId).deleteFromInbox().then(response => {
+const markAsRead = async (r, engagement) => {
+  return r.getMessage(engagement.providerId).markAsRead().then(response => {
     return {providerId: response.name}
-  }).catch(({error}) => {
-    return {error}
+  }).catch((e) => {
+    console.log(e)
+    return {error: e.error}
   })
 }

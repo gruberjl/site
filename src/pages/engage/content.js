@@ -34,8 +34,8 @@ export class Content extends React.Component {
     })
   }
 
-  onRemove = (post, account) => {
-    const doc = store.engagements.create('reddit', account.id, 'deleteFromInbox', moment().toISOString())
+  markAsRead = (post, account) => {
+    const doc = store.engagements.create('reddit', account.id, 'markAsRead', moment().toISOString())
     doc.providerId = post.id
     store.engagements.set(doc)
   }
@@ -56,7 +56,7 @@ export class Content extends React.Component {
               return <TwitterPost key={post.id} post={post} />
 
             if (stream.type == 'Direct Messages')
-              return <RedditDirectMessage key={post.id} post={post} account={account} remove={() => this.onRemove(post, account)} />
+              return <RedditDirectMessage key={post.id} post={post} account={account} markAsRead={() => this.markAsRead(post, account)} />
 
             return <div key={post.id} />
           }) }

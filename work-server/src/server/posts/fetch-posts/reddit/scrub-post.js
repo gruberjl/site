@@ -2,7 +2,7 @@ import moment from 'moment'
 
 export const scrubPost = post => {
   const newPost = {
-    id: post.id,
+    id: post.name,
     subject: post.subject,
     text: post.body || '',
     inReplyToId: '',
@@ -12,7 +12,7 @@ export const scrubPost = post => {
     favorited: false,
     shared: false,
     created: moment.unix(post.created_utc).toISOString(),
-    raw: post
+    isRead: !post.new
   }
 
   return newPost

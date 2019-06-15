@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-export const RedditDirectMessage = ({post, account, remove}) => (
+export const RedditDirectMessage = ({post, account, markAsRead}) => (
   <div className="box post-container">
     <article className="media">
       <div className="media-left">
@@ -20,9 +20,9 @@ export const RedditDirectMessage = ({post, account, remove}) => (
         </div>
         <nav className="level is-mobile">
           <div className="level-left">
-            <a className="level-item" aria-label="delete" onClick={remove}>
+            <a className="level-item" aria-label="Mark as read" onClick={markAsRead}>
               <span className="icon is-small">
-                <i className="material-icons" aria-hidden="true">delete</i>
+                <i className="material-icons" aria-hidden="true">markunread</i>
               </span>
             </a>
           </div>
