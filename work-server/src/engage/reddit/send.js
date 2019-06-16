@@ -1,4 +1,5 @@
 import snoowrap from 'snoowrap'
+import sleep from 'await-sleep'
 
 export const send = async (engagement, account, parentEngagement) => {
   const r = new snoowrap({
@@ -29,8 +30,9 @@ const post = (r, engagement) => {
   }))
 }
 
-const like = (r, engagement, parentEngagement) => {
-  return r.getSubmission(parentEngagement.providerId).upvote().then(response => {
+const like = async (r, engagement, parentEngagement) => {
+  const id = parentEngagement ? parentEngagement.providerId : engagement.providerId
+  return r.getSubmission(id).upvote().then(response => {
     return {providerId: response.name}
   }).catch(({error}) => {
     return {error}

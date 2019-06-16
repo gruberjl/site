@@ -2,6 +2,7 @@ import React from 'react'
 import {PageHeader} from 'components'
 import {TwitterBlast} from './twitter-blast'
 import {RedditBlast} from './reddit-blast'
+import {RedditUpvote} from './reddit-upvote'
 
 export class Grow extends React.Component {
   constructor() {
@@ -28,11 +29,16 @@ export class Grow extends React.Component {
             <li className={tabSelected == 'reddit-blast' ? "is-active" : ''}>
               <a name='reddit-blast' onClick={this.selectTab}>RedditBlast</a>
             </li>
+            <li className={tabSelected == 'reddit-upvote' ? "is-active" : ''}>
+              <a name='reddit-upvote' onClick={this.selectTab}>Reddit Upvote</a>
+            </li>
           </ul>
         </div>
         { this.state.tabSelected == 'twitter-blast'
           ? <TwitterBlast />
-          : <RedditBlast />
+          : this.state.tabSelected == 'reddit-blast'
+            ? <RedditBlast />
+            : <RedditUpvote />
         }
       </div>
     )
