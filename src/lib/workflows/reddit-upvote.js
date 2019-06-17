@@ -9,7 +9,7 @@ export const redditUpvote = async (postId, authorAccountId) => {
   const altAccounts = getAltAccounts(authorAccountId)
 
   for (let i = 0; i < altAccounts.length; i++) {
-    const delayInMinutes = Math.floor(Math.random() * 121) + 1
+    const delayInMinutes = Math.floor(Math.random() * 421) + 1
 
     const engagement = store.engagements.create('reddit', altAccounts[i].id, 'like', moment().add(delayInMinutes, 'minutes').toISOString())
     engagement.providerId = `${prefix}${postId}`
