@@ -3,14 +3,15 @@ import clone from 'clone-deep'
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js'
 import {store} from 'lib'
 import {Main} from './Main'
+import moment from 'moment'
 
 const {questions} = store
 
 export class MainHoc extends React.Component {
   constructor(props) {
     super(props)
-
-    const questionDoc = questions.getOrCreate(props.date)
+    this.date = moment().format('YYYY-MM-DD')
+    const questionDoc = questions.getOrCreate(this.date)
 
     this.state = {
       isLoaded: questions.isLoaded,
@@ -18,8 +19,6 @@ export class MainHoc extends React.Component {
       willEditor:EditorState.createWithContent(convertFromRaw(questionDoc.will)),
       didEditor:EditorState.createWithContent(convertFromRaw(questionDoc.did))
     }
-
-
   }
 
   componentDidMount() {
@@ -32,7 +31,7 @@ export class MainHoc extends React.Component {
 
   onQuestionsChange = () => {
     this.setState(state => {
-      const questionDoc = questions.getOrCreate(this.props.date)
+      const questionDoc = questions.getOrCreate(this.date)
 
       return {
         questionDoc,
@@ -75,7 +74,7 @@ export class MainHoc extends React.Component {
 
   render() {
     return <Main
-      date={this.props.date}
+      date={this.date}
       {...this.state}
       onWillEditorChange={this.onWillEditorChange}
       onDidEditorChange={this.onDidEditorChange}

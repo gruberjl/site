@@ -18,6 +18,12 @@ class Tasks extends EventEmitter {
     docsUpdated: 'docsUpdated'
   }
 
+  filters = {
+    all: 'All',
+    today: 'Today',
+    future: 'Future'
+  }
+
   onLogin = (user) => {
     this.collection = firestore.db.collection('root').doc(user.uid).collection('tasks')
     this.listener = this.collection.onSnapshot(this.onTasksChange)
