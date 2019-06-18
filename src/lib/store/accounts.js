@@ -71,6 +71,12 @@ class Accounts extends EventEmitter {
   set(doc) {
     firestore.set(this.collection, doc)
   }
+
+  remove(docId) {
+    return this.collection.doc(docId).delete()
+      .then(() => true)
+      .catch(error => ({error}))
+  }
 }
 
 export const accounts = new Accounts()
