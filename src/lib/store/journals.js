@@ -5,7 +5,7 @@ import {convertToRaw, EditorState} from 'draft-js'
 class Journals extends Collection {
   constructor(collectionName) {
     super(collectionName)
-    this.events.activePageChanged = 'ACTIVE_PAGE_CHANGED'
+    this.events.activePage = 'activePage'
   }
 
   activePage = ''
@@ -22,7 +22,7 @@ class Journals extends Collection {
 
   setActivePage = (pageId) => {
     this.activePage = pageId
-    this.emit(this.events.activePageChanged, pageId)
+    this.emit(this.events.activePage, pageId)
   }
 }
 

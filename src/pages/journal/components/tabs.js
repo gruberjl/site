@@ -2,33 +2,11 @@ import React from 'react'
 import {Icons} from 'components'
 import {store} from 'lib'
 import {Tab} from './tab'
+import {connect} from 'lib'
 
 const {journals} = store
 
 export class Tabs extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      activePage: journals.activePage,
-      docs: journals.docs
-    }
-  }
-
-  componentDidMount() {
-    journals.on(journals.events.docsUpdated, this.onDocsUpdated)
-    journals.on(journals.events.activePageChanged, this.onActivePageChanged)
-  }
-
-  componentWillUnmount() {
-    journals.removeListener(journals.events.docsUpdated, this.onDocsUpdated)
-    journals.removeListener(journals.events.activePageChanged, this.onActivePageChanged)
-  }
-
-  onDocsUpdated = (docs) => {
-    this.setState({docs})
-  }
-
   onActivePageChanged = (activePage) => {
     this.setState({activePage})
   }
@@ -44,7 +22,8 @@ export class Tabs extends React.Component {
   }
 
   render() {
-    const {activePage, docs} = this.state
+    const {docs, activePage} = this.props
+
     return (
       <div className="tabs">
         <ul>
@@ -57,3 +36,5 @@ export class Tabs extends React.Component {
     )
   }
 }
+
+export default connect(Tabs, 'journals')

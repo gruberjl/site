@@ -7,13 +7,17 @@ export class Collection extends EventEmitter {
     super()
     this.collectionName = collectionName
     auth.once(auth.events.login, this.onLogin)
+
+    this.functions = {
+      set: this.set
+    }
   }
 
   docs = {}
   isLoaded = false
 
   events = {
-    docsUpdated: 'docsUpdated'
+    docs: 'docs'
   }
 
   onLogin = (user) => {
@@ -36,7 +40,7 @@ export class Collection extends EventEmitter {
     })
 
     this.isLoaded = true
-    this.emit(this.events.docsUpdated, this.docs, snapshot.metadata.fromCache)
+    this.emit(this.events.docs, this.docs, snapshot.metadata.fromCache)
   }
 
   set(doc) {
