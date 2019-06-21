@@ -1,51 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {store} from 'lib'
+import {redux} from 'lib'
 import Profile from './profile'
+import {connect} from 'react-redux'
 
-const {auth} = store
-
-export class PageHeader extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      isLoggedIn: auth.isLoggedIn
-    }
-  }
-
-  componentDidMount() {
-    auth.on(auth.events.login, this.onLogin)
-    auth.on(auth.events.logout, this.onLogout)
-  }
-
-  componentWillUnmount() {
-    auth.removeListener(auth.events.login, this.onLogin)
-    auth.removeListener(auth.events.logout, this.onLogout)
-  }
-
-  onLogin = () => {
-    this.setState({
-      isLoggedIn: true
-    })
-  }
-
-  onLogout = () => {
-    this.setState({
-      isLoggedIn: false
-    })
-  }
-
-  openLoginModal = () => {
-    auth.emit(auth.events.toggleSigninModal, {isOpen: true})
-  }
-
-  openSignupModal = () => {
-    auth.emit(auth.events.toggleSignupModal, {isOpen: true})
-  }
-
+class PageHeader extends React.Component {
   render() {
-    const {isLoggedIn} = this.state
+    const {isLoggedIn} = this.props
 
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -62,7 +23,6 @@ export class PageHeader extends React.Component {
             <Link to="/" className="navbar-item">Day</Link>
             <Link to="/journal" className="navbar-item">Journal</Link>
             <Link to="/engage" className="navbar-item">Engage</Link>
-            <Link to="/grow" className="navbar-item">Grow</Link>
           </div>
 
           <div className="navbar-end">
@@ -70,8 +30,8 @@ export class PageHeader extends React.Component {
               { isLoggedIn ?
                 <Profile /> :
                 <div className="buttons">
-                  <a className="button is-light" onClick={this.openLoginModal}>Log in</a>
-                  <a className="button is-primary" onClick={this.openSignupModal}>Sign Up</a>
+                  <a className="button is-light" onClick={() => redux.emit.auth.toggleModal('signin')}>Log in</a>
+                  <a className="button is-primary" onClick={() => redux.emit.auth.toggleModal('signup')}>Sign Up</a>
                 </div>
               }
             </div>
@@ -81,3 +41,11 @@ export class PageHeader extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.auth.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(PageHeader)

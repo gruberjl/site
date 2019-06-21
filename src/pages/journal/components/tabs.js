@@ -1,40 +1,25 @@
 import React from 'react'
 import {Icons} from 'components'
-import {store} from 'lib'
-import {Tab} from './tab'
-import {connect} from 'lib'
+import {redux} from 'lib'
+import Tab from './tab'
+import {connect} from 'react-redux'
 
-const {journals} = store
+export const Tabs = ({docs, activePageId}) => (
+  <div className="tabs">
+    <ul>
+      { Object.values(docs).map(doc => (
+        <Tab key={doc.id} doc={doc} activePage={activePageId} setActivePage={redux.emit.journals.setActivePage} />
+      )) }
+      <li><a onClick={redux.emit.journals.addPage}><Icons.NewPage/></a></li>
+    </ul>
+  </div>
+)
 
-export class Tabs extends React.Component {
-  onActivePageChanged = (activePage) => {
-    this.setState({activePage})
-  }
-
-  addPage = () => {
-    const page = journals.create()
-    journals.set(page)
-    this.setState({activePage: page.id})
-  }
-
-  setActivePage = (pageId) => {
-    journals.setActivePage(pageId)
-  }
-
-  render() {
-    const {docs, activePage} = this.props
-
-    return (
-      <div className="tabs">
-        <ul>
-          { Object.values(docs).map(doc => (
-            <Tab key={doc.id} doc={doc} activePage={activePage} setActivePage={this.setActivePage} />
-          )) }
-          <li><a onClick={this.addPage}><Icons.NewPage/></a></li>
-        </ul>
-      </div>
-    )
+const mapStateToProps = state => {
+  return {
+    docs: state.journals.docs,
+    activePageId: state.journals.activePageId
   }
 }
 
-export default connect(Tabs, 'journals')
+export default connect(mapStateToProps)(Tabs)

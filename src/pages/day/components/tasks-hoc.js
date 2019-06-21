@@ -1,64 +1,66 @@
 import React from 'react'
-import {store} from 'lib'
 import {TaskHoc} from 'components'
 import moment from 'moment'
+import {connect} from 'react-redux'
+import shortid from 'shortid'
+import {convertToRaw, EditorState} from 'draft-js'
 
-export class TasksHoc extends React.Component {
+const newTask = () => {
+  return {
+    id: shortid.generate(),
+    content: convertToRaw(EditorState.createEmpty().getCurrentContent()),
+    startDate: moment().format('YYYY-MM-DD'),
+    done: ''
+  }
+}
+
+const filters = {
+  all: 'All',
+  today: 'Today',
+  future: 'Future'
+}
+
+class TasksHoc extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      isLoaded: store.tasks.isLoaded,
-      tasks: this.getTasks(store.tasks.filters.today),
-      newTask: store.tasks.create(),
-      tasksFilter: store.tasks.filters.today
+      newTask: newTask(),
+      tasksFilter: 'Today'
     }
   }
 
-  componentDidMount() {
-    store.tasks.on(store.tasks.events.docsUpdated, this.onTasksChange)
-  }
-
-  componentWillUnmount() {
-    store.tasks.removeListener(store.tasks.events.docsUpdated, this.onTasksChange)
-  }
-
-  onTasksChange = (docs) => {
-    const newTask = docs[this.state.newTask.id]
-      ? store.tasks.create()
-      : this.state.newTask
-
-    this.setState(state => ({
-      isLoaded: store.tasks.isLoaded,
-      tasks: this.getTasks(state.tasksFilter),
-      newTask
-    }))
+  componentDidUpdate() {
+    if (this.props.docs[this.state.newTask.id]) {
+      this.setState({
+        newTask: newTask()
+      })
+    }
   }
 
   setFilter = (event) => {
     event.preventDefault()
     const tasksFilter = event.target.name
     this.setState({
-      tasksFilter,
-      tasks: this.getTasks(tasksFilter)
+      tasksFilter
     })
   }
 
   getTasks = (filter) => {
-    const tasks = Object.values(store.tasks.docs)
-    if (filter == store.tasks.filters.all)
+    const tasks = Object.values(this.props.docs)
+    if (filter == filters.all)
       return tasks
 
-    if (filter == store.tasks.filters.today)
+    if (filter == filters.today)
       return tasks.filter(t => t.startDate <= moment().format('YYYY-MM-DD') && !t.done)
 
-    if (filter == store.tasks.filters.future)
+    if (filter == filters.future)
       return tasks.filter(t => t.startDate > moment().format('YYYY-MM-DD') && !t.done)
   }
 
   render() {
-    const {tasks, newTask, tasksFilter} = this.state
-    const {filters} = store.tasks
+    const {newTask, tasksFilter} = this.state
+    const tasks = this.getTasks(tasksFilter)
 
     return (
       <div className="is-full-width">
@@ -85,3 +87,12 @@ export class TasksHoc extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    docs: state.tasks.docs,
+    isLoaded: state.tasks.isLoaded
+  }
+}
+
+export default connect(mapStateToProps)(TasksHoc)

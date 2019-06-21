@@ -2,28 +2,26 @@ import React from 'react'
 import clone from 'clone-deep'
 import {Draft} from 'components'
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js'
-import {store} from 'lib'
+import {connect} from 'react-redux'
+import {redux} from 'lib'
 
-const {journals} = store
+class Content extends React.Component {
+  constructor(props) {
+    super(props)
 
-export class Content extends React.Component {
-  constructor() {
-    super()
+    this.state = {editorState: EditorState.createEmpty()}
 
-    if (journals.activePage == '') {
-      this.state = {doc: {}}
-    } else {
-      this.state = {doc:journals.docs[journals.activePage]}
-      this.state.editorState = EditorState.createWithContent(convertFromRaw(this.state.doc.content))
+    if (props.doc) {
+      this.state.editorState = EditorState.createWithContent(convertFromRaw(this.props.doc.content))
     }
   }
 
-  componentDidMount() {
-    journals.on(journals.events.activePageChanged, this.onActivePageChanged)
-  }
-
-  componentWillUnmount() {
-    journals.removeListener(journals.events.activePageChanged, this.onActivePageChanged)
+  componentDidUpdate(prevProps) {
+    if (this.props.doc !== prevProps.doc) {
+      this.setState({
+        editorState: EditorState.createWithContent(convertFromRaw(this.props.doc.content))
+      })
+    }
   }
 
   onChange = (editorState) => {
@@ -32,19 +30,12 @@ export class Content extends React.Component {
     })
   }
 
-  onActivePageChanged = (pageId) => {
-    this.setState({
-      doc: journals.docs[pageId],
-      editorState: EditorState.createWithContent(convertFromRaw(journals.docs[pageId].content))
-    })
-  }
-
   save = () => {
     const raw = convertToRaw(this.state.editorState.getCurrentContent())
-    if (JSON.stringify(raw) !== JSON.stringify(this.state.doc.content)) {
-      const doc = clone(this.state.doc)
+    if (JSON.stringify(raw) !== JSON.stringify(this.props.doc.content)) {
+      const doc = clone(this.props.doc)
       doc.content = raw
-      journals.set(doc)
+      redux.emit.setDoc('journals', doc)
     }
   }
 
@@ -68,3 +59,11 @@ export class Content extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    doc: state.journals.docs[state.journals.activePageId]
+  }
+}
+
+export default connect(mapStateToProps)(Content)

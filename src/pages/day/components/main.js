@@ -1,8 +1,8 @@
 import React from 'react'
 import {SectionDivider, Draft} from 'components'
-import {TasksHoc} from './tasks-hoc'
+import TasksHoc from './tasks-hoc'
 
-export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDidEditorChange, date}) => (
+export const Main = ({willEditor, onWillEditorChange, didEditor, onDidEditorChange, date, onEditorBlur}) => (
   <main className="section">
     <div className="container">
       <div className="level">
@@ -11,7 +11,7 @@ export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDid
             placeholder="What good will you do today?"
             editorState={willEditor}
             onChange={onWillEditorChange}
-            readOnly={!isLoaded}
+            onBlur={onEditorBlur}
           />
         </div>
       </div>
@@ -28,7 +28,7 @@ export const Main = ({willEditor, onWillEditorChange, isLoaded, didEditor, onDid
             placeholder="What good did you do today?"
             editorState={didEditor}
             onChange={onDidEditorChange}
-            readOnly={!isLoaded}
+            onBlur={onEditorBlur}
           />
         </div>
       </div>

@@ -1,14 +1,25 @@
 import React from 'react'
 import {Icons} from 'components'
-import {Tab} from './tab'
+import Tab from './tab'
+import {connect} from 'react-redux'
+import {redux} from 'lib'
 
-export const TabsEditable = ({tabs, activeTab, setActiveTab, onNameChange, addTab}) => (
+const TabsEditable = ({collectionName, docs, activePageId}) => (
   <div className="tabs">
     <ul>
-      { Object.values(tabs).map(tab => (
-        <Tab key={tab.id} tab={tab} activeTab={activeTab} setActivePage={setActiveTab} onNameChange={onNameChange} />
+      { Object.values(docs).map(doc => (
+        <Tab key={doc.id} doc={doc} activePageId={activePageId} collectionName={collectionName} />
       )) }
-      <li><a onClick={addTab}><Icons.NewPage/></a></li>
+      <li><a onClick={redux.emit[collectionName].addDoc}><Icons.NewPage/></a></li>
     </ul>
   </div>
 )
+
+const mapStateToProps = (state, props) => {
+  return {
+    docs: state[props.collectionName].docs,
+    activePageId: state[props.collectionName].activePageId
+  }
+}
+
+export default connect(mapStateToProps)(TabsEditable)

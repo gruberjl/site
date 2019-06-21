@@ -1,34 +1,16 @@
 import React from 'react'
-import {store} from 'lib'
+import {connect} from 'react-redux'
+import {redux, firestore} from 'lib'
 
-const {auth} = store
-
-export class SignupModal extends React.Component {
+class SignupModal extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      isOpen: false,
       email: '',
       password: '',
       error: ''
     }
-  }
-
-  componentDidMount() {
-    auth.on(auth.events.toggleSignupModal, this.toggleModal)
-  }
-
-  componentWillUnmount() {
-    auth.removeListener(auth.events.toggleSignupModal, this.toggleModal)
-  }
-
-  toggleModal = ({isOpen}) => {
-    this.setState({isOpen})
-  }
-
-  closeModal = () => {
-    auth.emit(auth.events.toggleSignupModal, {isOpen: false})
   }
 
   formChange = (e) => {
@@ -40,22 +22,24 @@ export class SignupModal extends React.Component {
   signup = (e) => {
     e.preventDefault()
     const {email, password} = this.state
-    auth.signup(email, password).then(({error}) => {
-      this.setState({error})
+    firestore.signup(email, password).then(({error}) => {
+      if (error)
+        this.setState({error: error.message})
     })
   }
 
   render() {
-    const {isOpen, email, password, error} = this.state
+    const {isSignupModalOpen, closeModal} = this.props
+    const {email, password, error} = this.state
 
     return (
-      <div className={`modal${isOpen ? ' is-active' : ''}`}>
-        <div className="modal-background" onClick={this.closeModal}></div>
+      <div className={`modal${isSignupModalOpen ? ' is-active' : ''}`}>
+        <div className="modal-background" onClick={closeModal}></div>
         <div className="modal-card">
           <form onSubmit={this.signup}>
             <header className="modal-card-head">
               <p className="modal-card-title">Signup</p>
-              <button className="delete" aria-label="close" onClick={this.closeModal}></button>
+              <button type="button" className="delete" aria-label="close" onClick={closeModal}></button>
             </header>
             <section className="modal-card-body">
 
@@ -91,7 +75,7 @@ export class SignupModal extends React.Component {
             </section>
             <footer className="modal-card-foot">
               <button type="submit" className="button is-success">Sign Up</button>
-              <button className="button" onClick={this.closeModal}>Cancel</button>
+              <button type="button" className="button" onClick={closeModal}>Cancel</button>
             </footer>
           </form>
         </div>
@@ -99,3 +83,12 @@ export class SignupModal extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isSignupModalOpen: state.auth.isSignupModalOpen,
+    closeModal: () => redux.emit.auth.toggleModal('signup', false)
+  }
+}
+
+export default connect(mapStateToProps)(SignupModal)

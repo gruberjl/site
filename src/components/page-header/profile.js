@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {store} from 'lib'
 import { withRouter } from "react-router"
-const {auth} = store
+import {redux} from 'lib'
 
 class Profile extends React.Component {
   constructor() {
@@ -57,7 +56,7 @@ class Profile extends React.Component {
             <Link className="dropdown-item" to="/streams">Streams</Link>
           </div>
           <div className="dropdown-content">
-            <a className="dropdown-item" onClick={auth.signout}>Sign Out</a>
+            <a className="dropdown-item" onClick={redux.emit.auth.signout}>Sign Out</a>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js'
 import clone from 'clone-deep'
 import {Draft} from 'components'
-import {store} from 'lib'
+import {redux} from 'lib'
 import {DoneCheck} from './done-check'
 import {StartPicker} from './start-picker'
 
@@ -26,7 +26,7 @@ export class TaskHoc extends React.Component {
     if (JSON.stringify(raw) !== JSON.stringify(this.props.task.content)) {
       const task = clone(this.props.task)
       task.content = raw
-      store.tasks.set(task)
+      redux.emit.setDoc('tasks', task)
     }
   }
 
@@ -41,13 +41,13 @@ export class TaskHoc extends React.Component {
   markDone = (done) => {
     const task = clone(this.props.task)
     task.done = done
-    store.tasks.set(task)
+    redux.emit.setDoc('tasks', task)
   }
 
   setStartDate = (startDate) => {
     const task = clone(this.props.task)
     task.startDate = startDate
-    store.tasks.set(task)
+    redux.emit.setDoc('tasks', task)
   }
 
   render() {

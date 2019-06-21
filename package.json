@@ -74,8 +74,10 @@
     "react": "^16.8.6",
     "react-datepicker": "^2.7.0",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
     "shortid": "^2.2.14",
     "snoowrap": "^1.16.0",
     "twit": "^2.2.11"
