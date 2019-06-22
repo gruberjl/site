@@ -9,8 +9,6 @@ export const addDoc = () => {
     username: '',
     accessToken: '',
     accessSecret: '',
-    apiToken: '',
-    apiSecret: '',
     followBack: false
   }
 

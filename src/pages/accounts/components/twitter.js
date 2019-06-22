@@ -1,7 +1,7 @@
 import React from 'react'
 import {docEdit} from 'components'
 
-const Twitter = ({onChange, save, username, accessToken, accessSecret, apiToken, apiSecret, followBack}) => (
+const Twitter = ({onChange, save, username, accessToken, accessSecret, followBack}) => (
   <div>
     <div className="columns">
       <div className="column">
@@ -32,24 +32,6 @@ const Twitter = ({onChange, save, username, accessToken, accessSecret, apiToken,
       </div>
     </div>
     <div className="columns">
-      <div className="column">
-        <div className="field">
-          <label className="label">Api Token</label>
-          <div className="control">
-            <input value={apiToken} className="input" type="text" placeholder="Api Token" name="apiToken" onChange={onChange} onBlur={save} />
-          </div>
-        </div>
-      </div>
-      <div className="column">
-        <div className="field">
-          <label className="label">Api Secret</label>
-          <div className="control">
-            <input value={apiSecret} className="input" type="text" placeholder="API Secret" name="apiSecret" onChange={onChange} onBlur={save} />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="columns">
       <div className="column is-narrow">
         <label className="checkbox">
           <input type="checkbox" onChange={onChange} name="followBack" checked={followBack} onBlur={save} /> Follow back
@@ -59,4 +41,4 @@ const Twitter = ({onChange, save, username, accessToken, accessSecret, apiToken,
   </div>
 )
 
-export default docEdit(Twitter, 'accounts', ['followBack', 'apiSecret', 'apiToken', 'accessSecret', 'accessToken', 'username'])
+export default docEdit(Twitter, 'accounts', ['followBack', 'accessSecret', 'accessToken', 'username'])
