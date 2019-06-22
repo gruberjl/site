@@ -1,4 +1,4 @@
-import {store} from '../store'
+import {store} from '../../store'
 
 export const docsHaveChanged = (collectionName) => (snapshot) => {
   let docs = {}

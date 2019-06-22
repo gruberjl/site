@@ -3,7 +3,7 @@ import {MainHoc} from './main-hoc'
 import {connect} from 'react-redux'
 import {redux} from 'lib'
 
-export class QuestionHoc extends React.Component {
+class QuestionHoc extends React.Component {
   constructor(props) {
     super()
 

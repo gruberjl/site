@@ -11,5 +11,5 @@ export const addDoc = () => {
     done: ''
   }
 
-  emit.setDoc('tasks', doc)
+  emit.db.setDoc('tasks', doc)
 }

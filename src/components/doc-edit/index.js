@@ -33,7 +33,7 @@ export const docEdit = (WrappedComponent, collectionName, fields) => {
         })
 
         const conName = collectionName || this.props.collectionName
-        redux.emit.setDoc(conName, doc)
+        redux.emit.db.setDoc(conName, doc)
       }
     }
 

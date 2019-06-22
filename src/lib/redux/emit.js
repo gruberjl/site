@@ -1,3 +1,4 @@
+import * as db from './db/emitters'
 import * as journals from './journals/emitters'
 import * as accounts from './accounts/emitters'
 import * as auth from './auth/emitters'
@@ -7,4 +8,4 @@ import * as streams from './streams/emitters'
 import * as channels from './channels/emitters'
 import * as emitters from './emitters'
 
-export const emit = {journals, accounts, auth, tasks, questions, streams, channels, ...emitters}
+export const emit = {db, journals, accounts, auth, tasks, questions, streams, channels, ...emitters}

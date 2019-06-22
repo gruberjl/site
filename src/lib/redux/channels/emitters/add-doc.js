@@ -7,5 +7,5 @@ export const addDoc = () => {
     name: 'Channel'
   }
 
-  emit.setDoc('channels', doc)
+  emit.db.setDoc('channels', doc)
 }

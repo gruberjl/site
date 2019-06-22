@@ -10,5 +10,5 @@ export const addDoc = () => {
     type: ''
   }
 
-  emit.setDoc('streams', doc)
+  emit.db.setDoc('streams', doc)
 }

@@ -4,7 +4,7 @@ import {redux} from 'lib'
 import Tab from './tab'
 import {connect} from 'react-redux'
 
-export const Tabs = ({docs, activePageId}) => (
+const Tabs = ({docs, activePageId}) => (
   <div className="tabs">
     <ul>
       { Object.values(docs).map(doc => (

@@ -35,7 +35,7 @@ class Content extends React.Component {
     if (JSON.stringify(raw) !== JSON.stringify(this.props.doc.content)) {
       const doc = clone(this.props.doc)
       doc.content = raw
-      redux.emit.setDoc('journals', doc)
+      redux.emit.db.setDoc('journals', doc)
     }
   }
 

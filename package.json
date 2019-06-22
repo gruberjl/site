@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"npm:start:dev-server\" \"npm:start:work-server\"",
+    "start": "concurrently \"npm:start:dev-server\"",
     "lint": "eslint src/**  --ignore-pattern *.scss",
     "start:dev-server": "webpack-dev-server --config ./webpack.config.js --mode development",
     "start:work-server": "nodemon work-server/src --exec babel-node --watch work-server/src",
@@ -37,6 +37,8 @@
     "bulma": "^0.7.5",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
+    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-react": "^7.13.0",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.12.0",

@@ -4,7 +4,7 @@ import {QuestionHoc} from './components'
 import {connect} from 'react-redux'
 import moment from 'moment'
 
-export class Day extends React.Component {
+class Day extends React.Component {
   constructor() {
     super()
     this.date = moment().format('YYYY-MM-DD')

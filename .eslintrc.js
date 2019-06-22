@@ -4,7 +4,12 @@ module.exports = {
     "browser": true,
     "es6": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -14,6 +19,9 @@ module.exports = {
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "babel-module": {}
     }
   },
   "rules": {

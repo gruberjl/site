@@ -1,7 +1,7 @@
 import React from 'react'
 import clone from 'clone-deep'
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js'
-import {Main} from './Main'
+import {Main} from './main'
 import {redux} from 'lib'
 
 export class MainHoc extends React.Component {
@@ -38,7 +38,7 @@ export class MainHoc extends React.Component {
       questionDoc.did = newDid
       questionDoc.will = newWill
 
-      redux.emit.setDoc('questions', questionDoc)
+      redux.emit.db.setDoc('questions', questionDoc)
     }
   }
 

@@ -9,5 +9,5 @@ export const addDoc = (date) => {
     done: ''
   }
 
-  emit.setDoc('questions', doc)
+  emit.db.setDoc('questions', doc)
 }

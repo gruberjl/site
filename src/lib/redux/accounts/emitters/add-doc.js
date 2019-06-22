@@ -14,5 +14,5 @@ export const addDoc = () => {
     followBack: false
   }
 
-  emit.setDoc('accounts', doc)
+  emit.db.setDoc('accounts', doc)
 }

@@ -26,7 +26,7 @@ export class TaskHoc extends React.Component {
     if (JSON.stringify(raw) !== JSON.stringify(this.props.task.content)) {
       const task = clone(this.props.task)
       task.content = raw
-      redux.emit.setDoc('tasks', task)
+      redux.emit.db.setDoc('tasks', task)
     }
   }
 
@@ -41,13 +41,13 @@ export class TaskHoc extends React.Component {
   markDone = (done) => {
     const task = clone(this.props.task)
     task.done = done
-    redux.emit.setDoc('tasks', task)
+    redux.emit.db.setDoc('tasks', task)
   }
 
   setStartDate = (startDate) => {
     const task = clone(this.props.task)
     task.startDate = startDate
-    redux.emit.setDoc('tasks', task)
+    redux.emit.db.setDoc('tasks', task)
   }
 
   render() {

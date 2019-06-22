@@ -23,6 +23,3 @@ export const App = () => (
     </Provider>
   </div>
 )
-
-// <Route path="/about" component={About} />
-// <Route path="/topics" component={Topics} />

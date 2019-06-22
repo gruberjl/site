@@ -9,5 +9,5 @@ export const addPage = () => {
     name: 'page'
   }
 
-  emit.setDoc('journals', doc)
+  emit.db.setDoc('journals', doc)
 }
