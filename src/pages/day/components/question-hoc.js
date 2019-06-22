@@ -8,7 +8,7 @@ class QuestionHoc extends React.Component {
     super()
 
     if (!props.doc)
-      redux.emit.questions.addDoc(props.date)
+      redux.emit.questions.addDoc(props.id, props.date)
   }
 
   render() {
@@ -24,8 +24,10 @@ class QuestionHoc extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
+  const id = `${state.auth.user.uid}-${props.date}`
   return {
-    doc: state.questions.docs[props.date]
+    doc: state.questions.docs[id],
+    id
   }
 }
 

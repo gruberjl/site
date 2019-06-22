@@ -1,9 +1,10 @@
 import {convertToRaw, EditorState} from 'draft-js'
 import {emit} from '../../emit'
 
-export const addDoc = (date) => {
+export const addDoc = (id, date) => {
   const doc = {
-    id: date,
+    id,
+    date,
     will: convertToRaw(EditorState.createEmpty().getCurrentContent()),
     did: convertToRaw(EditorState.createEmpty().getCurrentContent()),
     done: ''
