@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import {Day, Journal, Engage, Accounts, Streams} from 'pages'
+import {Day, Journal, Engage, Accounts, Streams, Grow} from 'pages'
 import {SigninModal, SignupModal} from 'components'
 import {Provider} from 'react-redux'
 import {redux} from 'lib'
@@ -18,6 +18,7 @@ export const App = () => (
           <Route exact path="/engage" component={Engage} />
           <Route exact path="/accounts" component={Accounts} />
           <Route exact path="/streams" component={Streams} />
+          <Route exact path="/grow" component={Grow} />
         </div>
       </Router>
     </Provider>

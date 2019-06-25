@@ -6,7 +6,8 @@ export const collectionNames = [
   'journals',
   'questions',
   'streams',
-  'tasks'
+  'tasks',
+  'engagements'
 ]
 
 export const getCollection = (collectionName) => collections[collectionName]

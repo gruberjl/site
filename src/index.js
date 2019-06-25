@@ -1,5 +1,6 @@
 import "@babel/polyfill"
 import 'draft-js/dist/Draft.css'
+import "react-datepicker/dist/react-datepicker.css"
 import './main.scss'
 
 import React from 'react'

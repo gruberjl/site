@@ -6,6 +6,7 @@ import {tasks} from './tasks/reducer'
 import {questions} from './questions/reducer'
 import {streams} from './streams/reducer'
 import {channels} from './channels/reducer'
+import {engagements} from './engagements/reducer'
 
 export const reducers = combineReducers({
   auth,
@@ -14,5 +15,6 @@ export const reducers = combineReducers({
   tasks,
   questions,
   streams,
-  channels
+  channels,
+  engagements
 })
