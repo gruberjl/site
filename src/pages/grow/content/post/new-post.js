@@ -10,7 +10,8 @@ const buildPost = () => ({
   postAt: moment().month(6).hour(16).minute(0).second(0).millisecond(0).toDate(),
   posted: false,
   type: 'post',
-  accountId: 'kxBWZz5G5'
+  accountId: 'kxBWZz5G5',
+  provider: 'twitter'
 })
 
 class NewPost extends React.Component {

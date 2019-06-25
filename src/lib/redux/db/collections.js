@@ -2,6 +2,7 @@ let collections = {}
 
 export const collectionNames = [
   'accounts',
+  'analytics',
   'channels',
   'journals',
   'questions',

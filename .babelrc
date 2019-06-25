@@ -15,7 +15,8 @@
       }
     ],
     "@babel/plugin-proposal-export-default-from",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "recharts"
   ],
   "ignore": [
     "./secret.json"

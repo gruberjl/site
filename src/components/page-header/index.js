@@ -24,6 +24,7 @@ class PageHeader extends React.Component {
             <Link to="/journal" className="navbar-item">Journal</Link>
             <Link to="/engage" className="navbar-item">Engage</Link>
             <Link to="/grow" className="navbar-item">Grow</Link>
+            <Link to="/analytics" className="navbar-item">Analytics</Link>
           </div>
 
           <div className="navbar-end">
