@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import TwitterFollowerChart from './twitter-follower-chart'
+import TwitterEngagementChart from './twitter-engagement-chart'
 
 class Content extends React.Component {
   render() {
@@ -8,10 +8,10 @@ class Content extends React.Component {
       <main className="section">
         <div className="container">
           <div className="columns">
-            <div className="column is-three-fifths is-offset-one-fifth">
+            <div className="column">
               <div>
-                { this.props.followerCountDoc
-                  ? <TwitterFollowerChart followerCountDoc={this.props.followerCountDoc} />
+                { this.props.followerCountDoc && this.props.engagementsDoc
+                  ? <TwitterEngagementChart followerCountDoc={this.props.followerCountDoc} engagementsDoc={this.props.engagementsDoc} />
                   : <div/>
                 }
               </div>
@@ -25,7 +25,8 @@ class Content extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    followerCountDoc: state.analytics.docs['CnKUqzti3ZjTXt2lOzRF']
+    followerCountDoc: state.analytics.docs['CnKUqzti3ZjTXt2lOzRF'],
+    engagementsDoc: state.analytics.docs['frp8sotBauhhzDlPr7nH']
   }
 }
 
