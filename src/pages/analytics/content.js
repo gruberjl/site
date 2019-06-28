@@ -11,8 +11,8 @@ class Content extends React.Component {
           <div className="columns">
             <div className="column">
               <div>
-                { this.props.followerCountDoc
-                  ? <TwitterEngagementChart followerCountDoc={this.props.followerCountDoc} engagementsDoc={this.props.engagementsDoc} />
+                { this.props.followerCountDoc && this.props.timelineDoc
+                  ? <TwitterEngagementChart followerCountDoc={this.props.followerCountDoc} timelineDoc={this.props.timelineDoc} />
                   : <div/>
                 }
               </div>

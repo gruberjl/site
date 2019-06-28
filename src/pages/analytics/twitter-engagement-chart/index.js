@@ -1,17 +1,18 @@
 import React from 'react'
-import {LineChart, Line, XAxis, YAxis, Tooltip} from 'recharts'
+import {ComposedChart, Bar, Line, XAxis, YAxis, Tooltip} from 'recharts'
 import {getData} from './get-data'
 
-const TwitterFollowerChart = ({followerCountDoc}) => {
-  getData(followerCountDoc)
+const TwitterFollowerChart = ({followerCountDoc, timelineDoc}) => {
   return (
     <div>
-      <LineChart width={1000} height={500} data={getData(followerCountDoc)}>
+      <ComposedChart width={1000} height={500} data={getData(followerCountDoc, timelineDoc)}>
         <XAxis dataKey="name" />
         <YAxis type="number" />
         <Tooltip />
         <Line type="monotone" dataKey="followers" stroke="#8884d8" />
-      </LineChart>
+        <Line type="monotone" dataKey="engagements" stroke="#8884d8" />
+        <Bar dataKey="posts" barSize={20} fill="#413ea0" />
+      </ComposedChart>
     </div>
   )
 }
