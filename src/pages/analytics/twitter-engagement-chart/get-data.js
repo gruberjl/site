@@ -10,7 +10,7 @@ const getFollowerCounts = (followerCountDoc, date, dayBefore) => {
   return 0
 }
 
-export const getData = (followerCountDoc, engagementsDoc) => {
+export const getData = (followerCountDoc) => {
   const obj = []
 
   for (let i = 0; i < 30; i++) {
@@ -19,7 +19,6 @@ export const getData = (followerCountDoc, engagementsDoc) => {
     obj.push({
       name: moment(date).format('MMM D'),
       followers: getFollowerCounts(followerCountDoc, date, dayBefore),
-
     })
   }
 
