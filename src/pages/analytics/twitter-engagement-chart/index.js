@@ -5,6 +5,7 @@ import {getData} from './get-data'
 const TwitterFollowerChart = ({followerCountDoc, timelineDoc}) => {
   return (
     <div>
+      <h2 className="title is-2">Engagement</h2>
       <ComposedChart width={1000} height={500} data={getData(followerCountDoc, timelineDoc)}>
         <XAxis dataKey="name" />
         <YAxis type="number" />

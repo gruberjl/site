@@ -21,7 +21,10 @@ const Content = ({posts}) => (
 
 const mapStateToProps = state => {
   return {
-    posts: Object.values(state.engagements.docs).filter(e => e.type == 'post').sort((a, b) => a.postAt < b.postAt ? -1 : 1)
+    posts: Object.values(state.engagements.docs)
+      .filter(e => e.type == 'post')
+      .filter (e => !e.posted)
+      .sort((a, b) => a.postAt < b.postAt ? -1 : 1)
   }
 }
 
